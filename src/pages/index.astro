@@ -11,13 +11,12 @@ const quickLinks = [
   { title: 'Our House Sausage', text: 'Made in-house from the Bella Napoli recipe.', href: '/our-sausage', img: '/images/quicklink-sausage.jpg', alt: 'Links of house-made Italian sausage' },
   { title: 'Prepared Meals', text: 'Fresh Italian dinners & family trays to go.', href: '/prepared-meals', img: '/images/quicklink-prepared-meals.jpg', alt: 'Tray of baked lasagna ready to take home' },
   { title: 'Catering', text: 'Parties & events across Palm Beach County.', href: '/catering', img: '/images/quicklink-catering.jpg', alt: 'Catering trays of antipasto and hot Italian entrees' },
-  { title: "Izzy's Bakery", text: 'Cannoli, cakes, pastries & fresh bread.', href: '/bakery', img: '/images/quicklink-bakery.jpg', alt: 'Display case of cannoli and Italian pastries' },
 ];
 
-const specials = [
-  { day: 'Tuesday', name: 'Sunday Gravy & Meatballs', note: 'Slow-simmered all day' },
-  { day: 'Thursday', name: 'Chicken Parm Hero', note: 'Hand-breaded, made to order' },
-  { day: 'Friday', name: 'Fresh Mozzarella Pull', note: 'Pulled in-house every morning' },
+// Highlights shown in the Izzy's Bakery feature band below.
+const bakeryHighlights = [
+  { title: 'Custom Cakes', text: 'Birthday, celebration & wedding cakes to order.', href: '/bakery/cakes', img: '/images/izzys-custom-cake.jpg', alt: 'Custom decorated Italian celebration cake from Izzy\u2019s Bakery' },
+  { title: 'Pastries & Cannoli', text: 'Cannoli filled to order, sfogliatelle, tiramisù.', href: '/bakery/pastries-and-desserts', img: '/images/izzys-cannoli.jpg', alt: 'Tray of fresh cannoli and Italian pastries' },
 ];
 ---
 
@@ -67,26 +66,45 @@ const specials = [
     </div>
   </section>
 
-  <!-- Specials -->
+  <!-- Izzy's Bakery feature -->
   <section class="container-x py-12">
-    <div class="grid items-center gap-10 rounded-xl2 bg-forest/5 p-8 lg:grid-cols-[1fr_1.1fr] lg:p-12">
-      <div>
-        <p class="eyebrow mb-3">This week at the counter</p>
-        <h2 class="font-display text-3xl font-semibold sm:text-4xl">Specials worth the trip</h2>
-        <p class="prose-warm mt-4">Our kitchen cooks fresh every morning. These rotate with the seasons — call ahead and we&rsquo;ll set one aside for you.</p>
-        <a href="/menu" class="btn-forest mt-6">See the full menu</a>
+    <div class="relative overflow-hidden rounded-xl2 border border-berry/15 bg-gradient-to-br from-berry/8 via-cream to-caramel/12 p-8 shadow-card sm:p-10 lg:p-12">
+      <div class="pointer-events-none absolute inset-0 -z-10 opacity-60" aria-hidden="true">
+        <div class="absolute -right-16 -top-16 h-64 w-64 rounded-full bg-berry/10 blur-3xl"></div>
+        <div class="absolute -bottom-20 -left-10 h-64 w-64 rounded-full bg-caramel/15 blur-3xl"></div>
       </div>
-      <ul class="grid gap-4">
-        {specials.map((s) => (
-          <li class="flex items-center justify-between gap-4 rounded-xl border border-ink/10 bg-cream px-5 py-4 shadow-card">
-            <div>
-              <p class="font-display text-lg text-forest">{s.name}</p>
-              <p class="text-sm text-ink/60">{s.note}</p>
-            </div>
-            <span class="rounded-full bg-gold/20 px-3 py-1 text-xs font-bold uppercase tracking-wider text-ink">{s.day}</span>
-          </li>
-        ))}
-      </ul>
+
+      <div class="grid items-center gap-10 lg:grid-cols-2">
+        <div>
+          <p class="eyebrow mb-3" style="color:var(--berry)">The sweet side of the market</p>
+          <h2 class="font-display text-3xl font-semibold text-berry sm:text-4xl lg:text-5xl">Izzy&rsquo;s Bakery</h2>
+          <p class="prose-warm mt-4">
+            Tucked inside Antonio&rsquo;s, our family bakery turns out fresh Italian pastries, custom cakes,
+            cookies by the pound, and warm bread every day. Cannoli filled to order, rum cakes, and wedding
+            cakes worth the occasion.
+          </p>
+          <div class="mt-7 flex flex-wrap gap-3">
+            <a href="/bakery/cakes" class="btn-wine">Order a Custom Cake</a>
+            <a href="/bakery" class="btn-outline">Visit Izzy&rsquo;s</a>
+          </div>
+        </div>
+
+        <div class="grid gap-5 sm:grid-cols-2">
+          {bakeryHighlights.map((b) => (
+            <a href={b.href} class="group flex flex-col overflow-hidden rounded-xl2 border border-berry/15 bg-cream/70 shadow-card transition hover:-translate-y-1 hover:shadow-lift">
+              <ImagePlaceholder src={b.img} alt={b.alt} ratio="4/3" variant="bakery" class="rounded-none border-0" />
+              <div class="flex flex-1 flex-col p-5">
+                <h3 class="font-display text-lg text-berry">{b.title}</h3>
+                <p class="mt-1 flex-1 text-sm text-ink/65">{b.text}</p>
+                <span class="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-berry">
+                  See more
+                  <svg class="h-4 w-4 transition group-hover:translate-x-1" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
     </div>
   </section>
 
