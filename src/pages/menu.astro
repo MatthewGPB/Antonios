@@ -1,0 +1,32 @@
+---
+import Base from '@layouts/Base.astro';
+import PageHeader from '@components/PageHeader.astro';
+import MenuList from '@components/MenuList.astro';
+import SectionCTA from '@components/SectionCTA.astro';
+import { deliMenu } from '@data/menu';
+import { business } from '@data/business';
+---
+
+<Base
+  title="Menu — Deli Counter, Hot Foods & Salads | Antonio's Italian Market"
+  description="See Antonio's Italian Market menu in Juno Beach, FL: imported deli meats and cheeses, hot foods like chicken parmigiana and sausage & peppers, fresh salads and sides."
+  path="/menu"
+>
+  <PageHeader
+    eyebrow="The full menu"
+    title="Deli counter, hot foods & salads"
+    lead="Everything is sliced, cooked, and made fresh in our Juno Beach kitchen. Prices below are a guide — stop in or call for daily specials and market items."
+  />
+
+  <section class="container-x py-12">
+    <MenuList sections={deliMenu} />
+    <p class="mt-8 text-center text-sm italic text-ink/55">
+      Menu and prices are samples for the new site and may change. Confirm current offerings by calling
+      <a class="font-semibold text-wine hover:underline" href={business.phoneHref}>{business.phoneDisplay}</a>.
+    </p>
+  </section>
+
+  <div class="py-8">
+    <SectionCTA title="Skip the line — order ahead" text="Place your deli and hot-food order online and we'll have it ready." variant="order" />
+  </div>
+</Base>

@@ -1,0 +1,41 @@
+---
+import Base from '@layouts/Base.astro';
+import PageHeader from '@components/PageHeader.astro';
+import MenuList from '@components/MenuList.astro';
+import SectionCTA from '@components/SectionCTA.astro';
+import ImagePlaceholder from '@components/ImagePlaceholder.astro';
+import { subsMenu } from '@data/menu';
+---
+
+<Base
+  title="Best Italian Subs & Sandwiches in Juno Beach | Antonio's Italian Market"
+  description="Hand-stacked Italian subs, hoagies, and pressed paninis on fresh-baked bread in Juno Beach, FL. The Antonio, chicken cutlet, meatball parm, and more — made to order."
+  path="/subs-and-sandwiches"
+>
+  <PageHeader
+    eyebrow="Heroes · Hoagies · Paninis"
+    title="The best Italian sub near you"
+    lead="We stack imported meats and fresh mozzarella on bread baked right here. Whether you want it cold and classic or hot off the press, every sub is built to order."
+  />
+
+  <section class="container-x grid items-center gap-10 py-12 lg:grid-cols-2">
+    <ImagePlaceholder src="/images/sub-the-antonio.jpg" alt="The Antonio signature sub with prosciutto, sopressata, and fresh mozzarella" ratio="4/3" class="shadow-card" />
+    <div>
+      <p class="eyebrow mb-3">House favorite</p>
+      <h2 class="font-display text-3xl font-semibold sm:text-4xl">Meet &ldquo;The Antonio&rdquo;</h2>
+      <p class="prose-warm mt-4">
+        Prosciutto, sopressata, capicola, fresh-pulled mozzarella, roasted peppers, and a drizzle of aged
+        balsamic on a crusty Italian roll. It&rsquo;s the one regulars come back for — and the reason we go
+        through so much mozzarella.
+      </p>
+    </div>
+  </section>
+
+  <section class="container-x py-8">
+    <MenuList sections={subsMenu} />
+  </section>
+
+  <div class="py-12">
+    <SectionCTA title="Call ahead and skip the wait" text="Order your subs online or by phone and we'll have them wrapped and ready." variant="order" />
+  </div>
+</Base>

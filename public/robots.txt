@@ -1,0 +1,5 @@
+# Antonio's Italian Market — allow full crawl
+User-agent: *
+Allow: /
+
+Sitemap: https://www.antoniositalianmarket.net/sitemap-index.xml

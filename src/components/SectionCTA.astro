@@ -1,0 +1,35 @@
+---
+import { business } from '@data/business';
+
+export interface Props {
+  title: string;
+  text?: string;
+  /** "order" shows Order Online + Call; "catering" shows Catering + Call. */
+  variant?: 'order' | 'catering' | 'contact';
+  tone?: 'forest' | 'wine';
+}
+
+const { title, text, variant = 'order', tone = 'forest' } = Astro.props;
+const bg = tone === 'wine' ? 'bg-wine' : 'bg-forest';
+---
+
+<section class="container-x">
+  <div class={`${bg} relative overflow-hidden rounded-xl2 px-6 py-12 text-center text-cream shadow-lift sm:px-12`}>
+    <div class="pointer-events-none absolute inset-0 opacity-10" aria-hidden="true">
+      <div class="absolute -left-10 -top-10 h-48 w-48 rounded-full bg-gold blur-2xl"></div>
+      <div class="absolute -bottom-10 -right-10 h-56 w-56 rounded-full bg-cream blur-3xl"></div>
+    </div>
+    <h2 class="font-display text-3xl font-semibold text-cream sm:text-4xl">{title}</h2>
+    {text && <p class="mx-auto mt-3 max-w-xl text-cream/85">{text}</p>}
+    <div class="mt-7 flex flex-wrap justify-center gap-3">
+      {variant === 'order' && (
+        <a href={business.orderUrl} target="_blank" rel="noopener noreferrer" class="btn-gold">Order Online</a>
+      )}
+      {variant === 'catering' && <a href="/catering" class="btn-gold">Plan Your Catering</a>}
+      {variant === 'contact' && <a href="/contact" class="btn-gold">Get in Touch</a>}
+      <a href={business.phoneHref} class="btn-outline border-cream text-cream hover:bg-cream hover:text-forest">
+        Call {business.phoneDisplay}
+      </a>
+    </div>
+  </div>
+</section>

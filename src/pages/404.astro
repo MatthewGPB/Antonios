@@ -1,0 +1,27 @@
+---
+import Base from '@layouts/Base.astro';
+import { primaryNav } from '@data/nav';
+const links = primaryNav.filter((l) => l.href !== '/');
+---
+
+<Base
+  title="Page Not Found | Antonio's Italian Market"
+  description="That page couldn't be found. Head back to Antonio's Italian Market home page or browse the menu, catering, and bakery."
+  path="/404"
+>
+  <section class="container-x flex min-h-[60vh] items-center justify-center py-20 text-center">
+    <div class="reveal max-w-xl">
+      <p class="font-display text-7xl font-bold text-gold">404</p>
+      <h1 class="mt-2 font-display text-3xl font-semibold sm:text-4xl">This page took a lunch break</h1>
+      <p class="prose-warm mx-auto mt-4">
+        We couldn&rsquo;t find what you were looking for. Try one of these instead:
+      </p>
+      <div class="mt-6 flex flex-wrap justify-center gap-2">
+        {links.map((l) => (
+          <a href={l.href} class="rounded-full border border-ink/15 px-4 py-2 text-sm font-semibold text-forest transition hover:bg-forest hover:text-cream">{l.label}</a>
+        ))}
+      </div>
+      <a href="/" class="btn-gold mt-8">Back to home</a>
+    </div>
+  </section>
+</Base>

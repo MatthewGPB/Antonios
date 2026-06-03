@@ -1,0 +1,71 @@
+---
+import Base from '@layouts/Base.astro';
+import PageHeader from '@components/PageHeader.astro';
+import MenuList from '@components/MenuList.astro';
+import CateringForm from '@components/CateringForm.astro';
+import ImagePlaceholder from '@components/ImagePlaceholder.astro';
+import { cateringTrays } from '@data/menu';
+import { business } from '@data/business';
+
+const steps = [
+  { n: '1', title: 'Tell us about your event', text: 'Date, headcount, and a few menu ideas — use the form or give us a call.' },
+  { n: '2', title: 'We build your menu', text: 'We suggest trays and portions to fit your crowd and budget, then confirm a quote.' },
+  { n: '3', title: 'Pick up or delivery', text: 'Trays come hot and ready. Ask about delivery across Palm Beach County.' },
+];
+---
+
+<Base
+  title="Italian Catering in Palm Beach County | Antonio's Italian Market"
+  description="Italian catering for parties and events in Jupiter, Palm Beach Gardens, North Palm Beach and across Palm Beach County. Antipasto, hot entrée trays, sub platters, and dessert. Request a quote."
+  path="/catering"
+>
+  <PageHeader
+    eyebrow="Parties · Events · Holidays"
+    title="Italian catering, done right"
+    lead="From office lunches to graduation parties to holiday spreads, Antonio's caters authentic Italian across Jupiter, Palm Beach Gardens, North Palm Beach, and all of Palm Beach County. Trays are made fresh the day of your event."
+  />
+
+  <!-- How it works -->
+  <section class="container-x py-12">
+    <div class="grid gap-6 md:grid-cols-3">
+      {steps.map((s) => (
+        <div class="rounded-xl2 border border-ink/10 bg-cream/60 p-6 shadow-card">
+          <span class="grid h-11 w-11 place-items-center rounded-full bg-wine font-display text-lg font-bold text-cream">{s.n}</span>
+          <h2 class="mt-4 font-display text-xl text-forest">{s.title}</h2>
+          <p class="mt-1 text-sm text-ink/65">{s.text}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Trays -->
+  <section class="container-x py-8">
+    <div class="mb-8 max-w-2xl">
+      <p class="eyebrow mb-3">Catering trays</p>
+      <h2 class="font-display text-3xl font-semibold sm:text-4xl">Crowd-pleasers by the tray</h2>
+      <p class="prose-warm mt-3">Half trays serve about 8–10; full trays serve about 16–20. Mix and match — we'll help you plan portions.</p>
+    </div>
+    <MenuList sections={cateringTrays} />
+  </section>
+
+  <!-- Form + image -->
+  <section class="container-x py-12">
+    <div class="grid items-start gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+      <div class="rounded-xl2 border border-ink/10 bg-cream/60 p-6 shadow-card sm:p-8">
+        <h2 class="font-display text-3xl font-semibold text-wine">Request a catering quote</h2>
+        <p class="prose-warm mt-2">Tell us a little about your event and we'll get right back to you. The more detail, the better the quote.</p>
+        <div class="mt-6">
+          <CateringForm />
+        </div>
+      </div>
+      <div class="space-y-6">
+        <ImagePlaceholder src="/images/catering-spread.jpg" alt="A full Italian catering spread with antipasto, hot trays, and bread" ratio="4/3" class="shadow-card" />
+        <div class="rounded-xl2 bg-forest p-6 text-cream shadow-card">
+          <h3 class="font-display text-xl">Catering on a deadline?</h3>
+          <p class="mt-1 text-sm text-cream/85">For last-minute orders, call us directly — we'll do our best to make it happen.</p>
+          <a href={business.phoneHref} class="btn-gold mt-4">Call {business.phoneDisplay}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

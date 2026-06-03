@@ -1,0 +1,61 @@
+---
+import Base from '@layouts/Base.astro';
+import PageHeader from '@components/PageHeader.astro';
+import SectionCTA from '@components/SectionCTA.astro';
+import ImagePlaceholder from '@components/ImagePlaceholder.astro';
+import { business } from '@data/business';
+
+const varieties = [
+  { name: 'Sweet Italian', note: 'Fennel, garlic, a touch of sweet — the everyday classic.' },
+  { name: 'Hot Italian', note: 'Crushed red pepper and Calabrian heat for the bold.' },
+  { name: 'Sausage & Peppers Ready', note: 'Pre-portioned with peppers and onions for the pan.' },
+];
+---
+
+<Base
+  title="House-Made Italian Sausage — The Bella Napoli Recipe | Antonio's Italian Market"
+  description="Antonio's makes its Italian sausage in-house in Juno Beach, carrying on the original Bella Napoli recipe. Sweet and hot varieties, ground and stuffed fresh."
+  path="/our-sausage"
+>
+  <PageHeader
+    eyebrow="A recipe worth protecting"
+    title="Our house-made Italian sausage"
+    lead="When Bella Napoli's doors closed, their sausage recipe didn't have to disappear with them. We carry it on — ground, seasoned, and stuffed fresh in our own kitchen."
+  />
+
+  <section class="container-x grid items-center gap-10 py-12 lg:grid-cols-2">
+    <div>
+      <p class="eyebrow mb-3">The story</p>
+      <h2 class="font-display text-3xl font-semibold sm:text-4xl">Carrying on the Bella Napoli recipe</h2>
+      <p class="prose-warm mt-4">
+        For years, locals made the trip for Bella Napoli&rsquo;s legendary Italian sausage. When the shop
+        closed, we made sure that flavor stayed in the neighborhood. Same proportions, same care — fennel,
+        garlic, and good pork, mixed and stuffed by hand in small batches.
+      </p>
+      <p class="prose-warm">
+        It&rsquo;s the backbone of our sausage &amp; peppers, it goes into our Sunday gravy, and it&rsquo;s
+        the thing people grill all weekend long. Ask the counter for it by the pound.
+      </p>
+    </div>
+    <ImagePlaceholder src="/images/sausage-fresh-links.jpg" alt="Fresh house-made Italian sausage links at Antonio's counter" ratio="4/3" class="shadow-card" />
+  </section>
+
+  <section class="container-x py-8">
+    <div class="grid gap-6 md:grid-cols-3">
+      {varieties.map((v) => (
+        <div class="rounded-xl2 border border-ink/10 bg-cream/60 p-6 shadow-card">
+          <h3 class="font-display text-xl text-forest">{v.name}</h3>
+          <p class="mt-1 text-sm text-ink/65">{v.note}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <div class="py-12">
+    <SectionCTA
+      title="Grilling this weekend?"
+      text="Call ahead and we'll have your sausage cut and ready by the pound."
+      variant="contact"
+    />
+  </div>
+</Base>

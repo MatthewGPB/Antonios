@@ -1,0 +1,58 @@
+---
+import Base from '@layouts/Base.astro';
+import PageHeader from '@components/PageHeader.astro';
+import SectionCTA from '@components/SectionCTA.astro';
+import ImagePlaceholder from '@components/ImagePlaceholder.astro';
+
+const values = [
+  { title: 'Made in-house', text: 'Mozzarella pulled fresh, sausage stuffed by hand, sauces simmered low and slow.' },
+  { title: 'NY-trained', text: 'Our chefs learned in old-school New York Italian kitchens and brought it south.' },
+  { title: 'Neighborhood first', text: 'We know our regulars by name — and we treat first-timers the same way.' },
+];
+---
+
+<Base
+  title="About Antonio's Italian Market — A Family Story in Juno Beach"
+  description="Antonio's Italian Market has served Juno Beach and North Palm Beach for 25+ years. Meet the family, the NY-trained chefs, and the neighborhood market behind the counter."
+  path="/about"
+>
+  <PageHeader
+    eyebrow="Our family, our neighborhood"
+    title="25+ years on US-1"
+    lead="Antonio's started with a simple idea: bring real, old-world Italian food to Juno Beach — the kind you'd find in a New York neighborhood deli — and treat every customer like family."
+  />
+
+  <section class="container-x grid items-center gap-10 py-12 lg:grid-cols-2">
+    <ImagePlaceholder src="/images/about-storefront.jpg" alt="Antonio's Italian Market storefront on US Highway 1 in Juno Beach" ratio="4/3" class="shadow-card" />
+    <div>
+      <p class="eyebrow mb-3">How we got here</p>
+      <h2 class="font-display text-3xl font-semibold sm:text-4xl">From New York kitchens to Juno Beach</h2>
+      <p class="prose-warm mt-4">
+        For more than two decades, our family has run the market on US-1, slicing imported meats, pulling
+        mozzarella, and cooking the kind of food that fills a house with the smell of Sunday gravy. Our
+        chefs trained in New York&rsquo;s Italian kitchens, and that training shows up in every cutlet and
+        every tray.
+      </p>
+      <p class="prose-warm">
+        Along the way we&rsquo;ve become the keepers of the beloved Bella Napoli sausage recipe, and we&rsquo;ve
+        grown to include <a href="/bakery">Izzy&rsquo;s Bakery</a> — the sweet side of the family — right
+        inside the market.
+      </p>
+    </div>
+  </section>
+
+  <section class="container-x py-8">
+    <div class="grid gap-6 md:grid-cols-3">
+      {values.map((v) => (
+        <div class="rounded-xl2 border border-ink/10 bg-cream/60 p-6 shadow-card">
+          <h3 class="font-display text-xl text-forest">{v.title}</h3>
+          <p class="mt-1 text-sm text-ink/65">{v.text}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <div class="py-12">
+    <SectionCTA title="Come say hello" text="Stop by the counter in Juno Beach — we'll point you to today's best thing." variant="contact" />
+  </div>
+</Base>

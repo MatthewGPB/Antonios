@@ -1,0 +1,137 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ------------------------------------------------------------------ */
+/*  Design tokens                                                      */
+/* ------------------------------------------------------------------ */
+:root {
+  --forest: #1f4d3a;
+  --wine: #9c3b2e;
+  --cream: #f6f4ee;
+  --gold: #bf9b3e;
+  --ink: #14241c;
+  --berry: #a14e63;
+  --caramel: #c79a5b;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Base                                                               */
+/* ------------------------------------------------------------------ */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--cream);
+    color: var(--ink);
+    font-family: theme('fontFamily.sans');
+    line-height: 1.65;
+    /* subtle paper/linen texture for old-world warmth */
+    background-image:
+      radial-gradient(transparent 0, transparent 96%, rgba(20, 36, 28, 0.015) 100%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  }
+
+  h1, h2, h3, h4 {
+    font-family: theme('fontFamily.display');
+    font-optical-sizing: auto;
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    color: var(--forest);
+    text-wrap: balance;
+  }
+
+  /* Focus visibility for keyboard users (accessibility) */
+  :focus-visible {
+    outline: 3px solid var(--gold);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background: var(--gold);
+    color: var(--ink);
+  }
+
+  a {
+    color: inherit;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/*  Reusable components                                                */
+/* ------------------------------------------------------------------ */
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+
+  /* The skip link, visible only when focused */
+  .skip-link {
+    @apply sr-only;
+  }
+  .skip-link:focus {
+    @apply not-sr-only fixed left-4 top-4 z-[100] rounded-md bg-forest px-4 py-2 text-cream shadow-lift;
+  }
+
+  /* Buttons */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold uppercase tracking-wider transition;
+  }
+  .btn-gold {
+    @apply btn bg-gold text-ink hover:brightness-105 hover:-translate-y-0.5 shadow-card;
+  }
+  .btn-wine {
+    @apply btn bg-wine text-cream hover:brightness-110 hover:-translate-y-0.5 shadow-card;
+  }
+  .btn-forest {
+    @apply btn bg-forest text-cream hover:brightness-110 hover:-translate-y-0.5 shadow-card;
+  }
+  .btn-outline {
+    @apply btn border-2 border-forest text-forest hover:bg-forest hover:text-cream;
+  }
+
+  /* The little hand-lettered eyebrow above headings */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-wine;
+  }
+  .eyebrow::before {
+    content: '';
+    @apply inline-block h-px w-8 bg-gold;
+  }
+
+  .prose-warm {
+    @apply max-w-prose text-[1.05rem] leading-relaxed text-ink/85;
+  }
+  .prose-warm p {
+    @apply mb-4;
+  }
+  .prose-warm a {
+    @apply font-semibold text-wine underline decoration-gold/60 underline-offset-2 hover:decoration-gold;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/*  Motion: one tasteful page-load reveal (respects reduced motion)    */
+/* ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    opacity: 0;
+    transform: translateY(14px);
+    animation: reveal 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  @keyframes reveal {
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}

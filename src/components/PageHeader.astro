@@ -1,0 +1,24 @@
+---
+export interface Props {
+  eyebrow?: string;
+  title: string;
+  lead?: string;
+  variant?: 'deli' | 'bakery';
+}
+const { eyebrow, title, lead, variant = 'deli' } = Astro.props;
+const accent = variant === 'bakery' ? 'text-berry' : 'text-forest';
+---
+
+<section class="relative overflow-hidden border-b border-ink/8">
+  <div class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
+    <div class={`absolute -right-24 -top-20 h-72 w-72 rounded-full blur-3xl ${variant === 'bakery' ? 'bg-berry/10' : 'bg-forest/10'}`}></div>
+    <div class="absolute -left-16 bottom-0 h-56 w-56 rounded-full bg-gold/10 blur-3xl"></div>
+  </div>
+  <div class="container-x py-14 md:py-18">
+    <div class="reveal max-w-3xl">
+      {eyebrow && <p class="eyebrow mb-4">{eyebrow}</p>}
+      <h1 class={`font-display text-4xl font-semibold sm:text-5xl ${accent}`}>{title}</h1>
+      {lead && <p class="prose-warm mt-5">{lead}</p>}
+    </div>
+  </div>
+</section>

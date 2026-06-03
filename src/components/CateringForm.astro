@@ -1,0 +1,79 @@
+---
+import { business } from '@data/business';
+
+/**
+ * Catering inquiry form.
+ *
+ * Submits client-side to Web3Forms (https://web3forms.com) — works on a fully
+ * static Vercel deploy with no server. On success it redirects to /thank-you.
+ *
+ * SETUP: create a free Web3Forms access key and paste it into the access_key
+ * field below (replace {{WEB3FORMS_KEY}}). Submissions are emailed to the
+ * address tied to that key.
+ *
+ * ALTERNATIVE (self-hosted): if the owners prefer not to use Web3Forms, replace
+ * the `action`/`access_key` approach with an Astro + Vercel serverless endpoint
+ * (src/pages/api/catering.ts using `export const prerender = false`) that sends
+ * mail via Resend (https://resend.com). The field names below can stay the same.
+ */
+
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? '';
+const redirectUrl = `${siteUrl}/thank-you`;
+const fieldBase =
+  'w-full rounded-lg border border-ink/15 bg-white px-4 py-3 text-ink shadow-sm outline-none transition focus:border-forest focus:ring-2 focus:ring-gold/40';
+const labelBase = 'mb-1.5 block text-sm font-semibold text-ink/80';
+---
+
+<form
+  action="https://api.web3forms.com/submit"
+  method="POST"
+  class="grid gap-5"
+>
+  <!-- Web3Forms config -->
+  <input type="hidden" name="access_key" value="{{WEB3FORMS_KEY}}" />
+  <input type="hidden" name="subject" value="New catering inquiry — Antonio's Italian Market" />
+  <input type="hidden" name="from_name" value="Antonio's Website" />
+  <input type="hidden" name="redirect" value={redirectUrl} />
+
+  <!-- Honeypot: bots fill this, humans never see it -->
+  <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" class="hidden" style="display:none" aria-hidden="true" />
+
+  <div class="grid gap-5 sm:grid-cols-2">
+    <div>
+      <label class={labelBase} for="cf-name">Name</label>
+      <input class={fieldBase} id="cf-name" name="name" type="text" required autocomplete="name" placeholder="Your name" />
+    </div>
+    <div>
+      <label class={labelBase} for="cf-phone">Phone</label>
+      <input class={fieldBase} id="cf-phone" name="phone" type="tel" required autocomplete="tel" placeholder="(561) 555-0123" />
+    </div>
+  </div>
+
+  <div>
+    <label class={labelBase} for="cf-email">Email</label>
+    <input class={fieldBase} id="cf-email" name="email" type="email" required autocomplete="email" placeholder="you@email.com" />
+  </div>
+
+  <div class="grid gap-5 sm:grid-cols-2">
+    <div>
+      <label class={labelBase} for="cf-date">Event date</label>
+      <input class={fieldBase} id="cf-date" name="event_date" type="date" />
+    </div>
+    <div>
+      <label class={labelBase} for="cf-headcount">Headcount</label>
+      <input class={fieldBase} id="cf-headcount" name="headcount" type="number" min="1" inputmode="numeric" placeholder="e.g. 25" />
+    </div>
+  </div>
+
+  <div>
+    <label class={labelBase} for="cf-message">Tell us about your event</label>
+    <textarea class={fieldBase} id="cf-message" name="message" rows="4" placeholder="Occasion, menu ideas, trays you're considering, pickup or delivery…"></textarea>
+  </div>
+
+  <div class="flex flex-wrap items-center gap-4">
+    <button type="submit" class="btn-wine">Request a Catering Quote</button>
+    <p class="text-sm text-ink/60">
+      Prefer to talk? Call <a class="font-semibold text-wine hover:underline" href={business.phoneHref}>{business.phoneDisplay}</a>.
+    </p>
+  </div>
+</form>

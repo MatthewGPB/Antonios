@@ -1,0 +1,117 @@
+---
+import Base from '@layouts/Base.astro';
+import Hero from '@components/Hero.astro';
+import SectionCTA from '@components/SectionCTA.astro';
+import ImagePlaceholder from '@components/ImagePlaceholder.astro';
+import { business } from '@data/business';
+
+const quickLinks = [
+  { title: 'The Deli Counter', text: 'Imported meats & cheeses, sliced fresh to order.', href: '/menu', img: '/images/quicklink-deli-counter.jpg', alt: 'Antonio\u2019s deli counter with fresh meats and cheeses' },
+  { title: 'Subs & Sandwiches', text: 'Stacked Italian heroes on fresh-baked bread.', href: '/subs-and-sandwiches', img: '/images/quicklink-italian-sub.jpg', alt: 'Italian combo sub stacked with cured meats and provolone' },
+  { title: 'Our House Sausage', text: 'Made in-house from the Bella Napoli recipe.', href: '/our-sausage', img: '/images/quicklink-sausage.jpg', alt: 'Links of house-made Italian sausage' },
+  { title: 'Prepared Meals', text: 'Fresh Italian dinners & family trays to go.', href: '/prepared-meals', img: '/images/quicklink-prepared-meals.jpg', alt: 'Tray of baked lasagna ready to take home' },
+  { title: 'Catering', text: 'Parties & events across Palm Beach County.', href: '/catering', img: '/images/quicklink-catering.jpg', alt: 'Catering trays of antipasto and hot Italian entrees' },
+  { title: "Izzy's Bakery", text: 'Cannoli, cakes, pastries & fresh bread.', href: '/bakery', img: '/images/quicklink-bakery.jpg', alt: 'Display case of cannoli and Italian pastries' },
+];
+
+const specials = [
+  { day: 'Tuesday', name: 'Sunday Gravy & Meatballs', note: 'Slow-simmered all day' },
+  { day: 'Thursday', name: 'Chicken Parm Hero', note: 'Hand-breaded, made to order' },
+  { day: 'Friday', name: 'Fresh Mozzarella Pull', note: 'Pulled in-house every morning' },
+];
+---
+
+<Base
+  title="Antonio's Italian Market & Deli | Juno Beach, FL"
+  description="Family-owned Italian market & deli in Juno Beach and North Palm Beach. Fresh deli counter, house-made sausage, prepared meals, subs, and catering across Palm Beach County."
+  path="/"
+>
+  <Hero
+    eyebrow="Family-owned since 1998 · Juno Beach"
+    title="A real Italian market & deli on US-1"
+    subtitle="Twenty-five years of NY-trained chefs, an imported deli counter, house-made sausage, and prepared meals to take home — right here in Juno Beach. Come hungry."
+    imageSrc="/images/hero-deli-counter.jpg"
+    imageAlt="Antonio's deli counter with fresh meats, cheeses, and prepared foods"
+  >
+    <a slot="actions" href={business.orderUrl} target="_blank" rel="noopener noreferrer" class="btn-gold">Order Online</a>
+    <a slot="actions" href="/catering" class="btn-wine">Plan Catering</a>
+    <a slot="actions" href={business.phoneHref} class="btn-outline">Call {business.phoneDisplay}</a>
+
+    <dl slot="below" class="mt-10 grid max-w-md grid-cols-3 gap-4 border-t border-ink/10 pt-6">
+      <div><dt class="font-display text-3xl text-wine">25+</dt><dd class="text-xs uppercase tracking-wider text-ink/60">Years serving</dd></div>
+      <div><dt class="font-display text-3xl text-wine">100%</dt><dd class="text-xs uppercase tracking-wider text-ink/60">Made in-house daily</dd></div>
+      <div><dt class="font-display text-3xl text-wine">6 days</dt><dd class="text-xs uppercase tracking-wider text-ink/60">Open Mon–Sat</dd></div>
+    </dl>
+  </Hero>
+
+  <!-- Quick links to every section -->
+  <section class="container-x py-12">
+    <div class="mb-8 max-w-2xl">
+      <p class="eyebrow mb-3">Everything under one roof</p>
+      <h2 class="font-display text-3xl font-semibold sm:text-4xl">From the counter to your table</h2>
+    </div>
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {quickLinks.map((q) => (
+        <a href={q.href} class="group flex flex-col overflow-hidden rounded-xl2 border border-ink/10 bg-cream/60 shadow-card transition hover:-translate-y-1 hover:shadow-lift">
+          <ImagePlaceholder src={q.img} alt={q.alt} ratio="16/10" class="rounded-none border-0" />
+          <div class="flex flex-1 flex-col p-5">
+            <h3 class="font-display text-xl text-forest">{q.title}</h3>
+            <p class="mt-1 flex-1 text-sm text-ink/65">{q.text}</p>
+            <span class="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-wine">
+              Explore
+              <svg class="h-4 w-4 transition group-hover:translate-x-1" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- Specials -->
+  <section class="container-x py-12">
+    <div class="grid items-center gap-10 rounded-xl2 bg-forest/5 p-8 lg:grid-cols-[1fr_1.1fr] lg:p-12">
+      <div>
+        <p class="eyebrow mb-3">This week at the counter</p>
+        <h2 class="font-display text-3xl font-semibold sm:text-4xl">Specials worth the trip</h2>
+        <p class="prose-warm mt-4">Our kitchen cooks fresh every morning. These rotate with the seasons — call ahead and we&rsquo;ll set one aside for you.</p>
+        <a href="/menu" class="btn-forest mt-6">See the full menu</a>
+      </div>
+      <ul class="grid gap-4">
+        {specials.map((s) => (
+          <li class="flex items-center justify-between gap-4 rounded-xl border border-ink/10 bg-cream px-5 py-4 shadow-card">
+            <div>
+              <p class="font-display text-lg text-forest">{s.name}</p>
+              <p class="text-sm text-ink/60">{s.note}</p>
+            </div>
+            <span class="rounded-full bg-gold/20 px-3 py-1 text-xs font-bold uppercase tracking-wider text-ink">{s.day}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Story strip -->
+  <section class="container-x grid items-center gap-10 py-12 lg:grid-cols-2">
+    <ImagePlaceholder src="/images/about-family-storefront.jpg" alt="The Antonio's family in front of the Juno Beach storefront" ratio="4/3" class="shadow-card" />
+    <div>
+      <p class="eyebrow mb-3">Our story</p>
+      <h2 class="font-display text-3xl font-semibold sm:text-4xl">NY-trained chefs, neighborhood prices</h2>
+      <p class="prose-warm mt-4">
+        Antonio&rsquo;s has been a fixture on US-1 for more than 25 years. Our chefs trained in New York&rsquo;s
+        old-school Italian kitchens, and they bring that same care to every tray of eggplant rollatini and
+        every pound of fresh mozzarella. We&rsquo;re proud to carry on the house sausage recipe from the
+        beloved Bella Napoli.
+      </p>
+      <a href="/about" class="btn-outline mt-6">Read our story</a>
+    </div>
+  </section>
+
+  <div class="py-12">
+    <SectionCTA
+      title="Hosting something? We cater."
+      text="Office lunches, family parties, holidays, and events across Jupiter, Palm Beach Gardens, and North Palm Beach."
+      variant="catering"
+      tone="wine"
+    />
+  </div>
+</Base>

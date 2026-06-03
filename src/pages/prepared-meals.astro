@@ -1,0 +1,41 @@
+---
+import Base from '@layouts/Base.astro';
+import PageHeader from '@components/PageHeader.astro';
+import MenuList from '@components/MenuList.astro';
+import SectionCTA from '@components/SectionCTA.astro';
+import ImagePlaceholder from '@components/ImagePlaceholder.astro';
+import { preparedMeals } from '@data/menu';
+---
+
+<Base
+  title="Prepared Italian Meals & Family Dinners To Go | Antonio's Italian Market"
+  description="Fresh prepared Italian meals and family dinners to go in Juno Beach, FL. Lasagna, chicken parm, baked ziti and more — heat-and-serve trays for busy weeknights."
+  path="/prepared-meals"
+>
+  <PageHeader
+    eyebrow="Dinner, handled"
+    title="Fresh prepared meals to go"
+    lead="No time to cook? Take home a tray of something we made this morning. Heat, serve, and look like you spent all day in the kitchen."
+  />
+
+  <section class="container-x grid items-center gap-10 py-12 lg:grid-cols-2">
+    <ImagePlaceholder src="/images/prepared-lasagna-tray.jpg" alt="Fresh lasagna tray ready to take home and bake" ratio="4/3" class="shadow-card" />
+    <div>
+      <p class="eyebrow mb-3">How it works</p>
+      <h2 class="font-display text-3xl font-semibold sm:text-4xl">Made fresh, ready when you are</h2>
+      <p class="prose-warm mt-4">
+        Our prepared meals are cooked fresh daily and packaged to heat at home. Grab a single portion for
+        tonight or a full family tray for the week. Order by 2pm for same-day pickup, or call ahead for
+        larger trays.
+      </p>
+    </div>
+  </section>
+
+  <section class="container-x py-8">
+    <MenuList sections={preparedMeals} />
+  </section>
+
+  <div class="py-12">
+    <SectionCTA title="Order tonight's dinner now" text="Reserve your trays online or by phone and pick up on your way home." variant="order" />
+  </div>
+</Base>

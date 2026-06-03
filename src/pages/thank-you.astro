@@ -1,0 +1,28 @@
+---
+import Base from '@layouts/Base.astro';
+import { business } from '@data/business';
+---
+
+<Base
+  title="Thank You | Antonio's Italian Market"
+  description="Thanks for reaching out to Antonio's Italian Market in Juno Beach. We've received your message and will be in touch soon."
+  path="/thank-you"
+>
+  <section class="container-x flex min-h-[60vh] items-center justify-center py-20 text-center">
+    <div class="reveal max-w-xl">
+      <span class="mx-auto grid h-16 w-16 place-items-center rounded-full bg-forest text-cream">
+        <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 13 4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <h1 class="mt-6 font-display text-4xl font-semibold sm:text-5xl">Grazie! Message received.</h1>
+      <p class="prose-warm mx-auto mt-4">
+        Thanks for reaching out. A member of the family will get back to you shortly. For anything
+        time-sensitive, give us a call at
+        <a class="font-semibold text-wine hover:underline" href={business.phoneHref}>{business.phoneDisplay}</a>.
+      </p>
+      <div class="mt-8 flex flex-wrap justify-center gap-3">
+        <a href="/" class="btn-forest">Back to home</a>
+        <a href="/menu" class="btn-outline">See the menu</a>
+      </div>
+    </div>
+  </section>
+</Base>

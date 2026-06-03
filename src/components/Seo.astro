@@ -1,0 +1,96 @@
+---
+import { business, openingHoursSpecification, postalAddress } from '@data/business';
+
+export interface Props {
+  title: string;
+  description: string;
+  /** Path only, e.g. "/catering". Canonical is built from site + path. */
+  path: string;
+  /** Optional social/OG image path (defaults to a generated placeholder). */
+  ogImage?: string;
+  /** Add Izzy's Bakery JSON-LD in addition to the sitewide LocalBusiness. */
+  includeBakerySchema?: boolean;
+}
+
+const { title, description, path, ogImage = '/images/og-default.jpg', includeBakerySchema = false } = Astro.props;
+
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://www.antoniositalianmarket.net';
+const canonical = `${siteUrl}${path === '/' ? '' : path}`;
+const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
+
+const sameAs = Object.values(business.social).filter(Boolean);
+
+// --- Sitewide LocalBusiness (Italian deli/market) ---
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': ['LocalBusiness', 'Restaurant', 'GroceryStore'],
+  '@id': `${siteUrl}/#business`,
+  name: business.name,
+  description:
+    'Family-owned Italian market & deli in Juno Beach, FL — fresh deli counter, house-made sausage, prepared meals, subs, and catering for Palm Beach County.',
+  url: siteUrl,
+  telephone: business.phoneDisplay,
+  email: business.email,
+  priceRange: business.priceRange,
+  image: ogImageUrl,
+  address: postalAddress,
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: business.geo.latitude,
+    longitude: business.geo.longitude,
+  },
+  openingHoursSpecification,
+  servesCuisine: 'Italian',
+  hasMenu: `${siteUrl}/menu`,
+  sameAs,
+};
+
+// --- Bakery schema (Izzy's) — only on bakery pages ---
+const bakerySchema = includeBakerySchema
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'Bakery',
+      '@id': `${siteUrl}/bakery/#bakery`,
+      name: business.izzys.name,
+      description:
+        "Izzy's Bakery — fresh Italian bakery in Juno Beach, FL. Custom cakes, cannoli, pastries, cookies, and fresh-baked bread.",
+      url: `${siteUrl}/bakery`,
+      telephone: business.izzys.phoneDisplay,
+      priceRange: business.priceRange,
+      address: postalAddress,
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: business.geo.latitude,
+        longitude: business.geo.longitude,
+      },
+      openingHoursSpecification,
+      servesCuisine: 'Italian',
+      parentOrganization: { '@id': `${siteUrl}/#business` },
+    }
+  : null;
+---
+
+<!-- Primary meta -->
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+<meta name="robots" content="index, follow" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content={business.name} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={ogImageUrl} />
+<meta property="og:locale" content="en_US" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImageUrl} />
+
+<!-- Structured data -->
+<script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+{bakerySchema && <script type="application/ld+json" set:html={JSON.stringify(bakerySchema)} />}
