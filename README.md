@@ -36,7 +36,7 @@ Search the project for `{{` to find every value that still needs a real one. The
 | Placeholder | Where | What to enter |
 |---|---|---|
 | `{{CONTACT_EMAIL}}` | `src/data/business.ts` | A professional email (e.g. `hello@antoniositalianmarket.net`) — not a personal AOL/Gmail. |
-| `{{GETSAUCE_ORDER_URL}}` | `src/data/business.ts` | The GetSauce online-ordering link. Powers every "Order Online" button. |
+| `{{UPPER_CRUST_ORDER_URL}}` | `src/data/business.ts` (`upperCrust`) | Where pie orders go through Antonio's. Defaults to the GetSauce link — change it if you set up a dedicated pie-order page. |
 | `{{IZZYS_PHONE_OR_SAME}}` | `src/data/business.ts` (`izzys`) | Izzy's phone, or leave Antonio's number if it's shared. |
 | `{{CONFIRM_HOURS}}` | `src/data/business.ts` | Confirm the hours against the Google Business Profile, then delete the note. |
 | `{{WEB3FORMS_KEY}}` | `src/components/CateringForm.astro` | Free access key from [web3forms.com](https://web3forms.com) so the catering form emails you. |
@@ -127,7 +127,8 @@ src/
   components/  Seo, Header, Footer, Hero, PageHeader, SectionCTA,
                MenuList, CateringForm, MapEmbed, ImagePlaceholder
   pages/       file-based routing (each file = one URL)
-    bakery/    index, cakes, pastries-and-desserts
+    bakery/    index, sourdough-and-breads, breakfast-and-desserts
+    upper-crust-pies.astro  (Antonio's distributes The Upper Crust pies)
   styles/      global.css
 public/        robots.txt, favicon.svg, images/
 ```

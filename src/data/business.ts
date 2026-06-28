@@ -67,7 +67,7 @@ export const business = {
   priceRange: '$$',
 
   // --- Online ordering (food) ---
-  orderUrl: '{{GETSAUCE_ORDER_URL}}', // GetSauce online ordering link
+  orderUrl: 'https://www.getsauce.com/order/antonios-deli-and-meats/menu', // GetSauce online ordering
 
   // --- Social profiles (sameAs in schema) ---
   social: {
@@ -89,6 +89,19 @@ export const business = {
     // {{IZZYS_PHONE_OR_SAME}} — if Izzy's shares Antonio's line, reuse it here.
     phoneDisplay: '(561) 625-6544',
     phoneHref: 'tel:+15616256544',
+  },
+
+  /**
+   * Antonio's is a local distributor of The Upper Crust pies — order their
+   * deep-dish pies through Antonio's. The Upper Crust is a separate, family-owned
+   * Lake Worth bakery (a Palm Beach County icon since 1978); we resell/carry them.
+   */
+  upperCrust: {
+    name: 'The Upper Crust',
+    // Where customers place pie orders THROUGH Antonio's. Defaults to the GetSauce
+    // order page; swap for a dedicated pie-order link if you set one up.
+    orderUrl: 'https://www.getsauce.com/order/antonios-deli-and-meats/menu', // {{UPPER_CRUST_ORDER_URL}}
+    website: 'https://theuppercrustpies.com',
   },
 } as const;
 

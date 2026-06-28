@@ -1,0 +1,49 @@
+---
+import Base from '@layouts/Base.astro';
+import PageHeader from '@components/PageHeader.astro';
+import MenuList from '@components/MenuList.astro';
+import SectionCTA from '@components/SectionCTA.astro';
+import ImagePlaceholder from '@components/ImagePlaceholder.astro';
+import { sourdoughAndBreads } from '@data/menu';
+import { business } from '@data/business';
+---
+
+<Base
+  title="Fresh Sourdough & Bread in Juno Beach | Izzy's Bakery"
+  description="Naturally leavened sourdough baked fresh daily at Izzy's Bakery in Juno Beach, FL, plus Italian loaves, ciabatta, and focaccia. Inside Antonio's Italian Market on US-1."
+  path="/bakery/sourdough-and-breads"
+  includeBakerySchema={true}
+>
+  <PageHeader
+    variant="bakery"
+    eyebrow="Baked fresh daily"
+    title="Sourdough & fresh breads"
+    lead="Sourdough is what we're known for — slow-fermented for deep flavor and a crackly crust. We bake in small batches, so loaves sell out. Call ahead or come early to be sure."
+  />
+
+  <section class="container-x grid items-center gap-10 py-12 lg:grid-cols-2">
+    <ImagePlaceholder src="/images/izzys-sourdough-loaves.jpg" alt="A row of fresh-baked sourdough loaves cooling on the rack" ratio="4/3" variant="bakery" class="shadow-card" />
+    <div>
+      <p class="eyebrow mb-3" style="color:var(--berry)">Naturally leavened</p>
+      <h2 class="font-display text-3xl font-semibold text-berry sm:text-4xl">A loaf worth the wait</h2>
+      <p class="prose-warm mt-4">
+        No shortcuts and no commercial yeast — just flour, water, salt, and time. The long ferment gives our
+        sourdough its tang, its chew, and that blistered, golden crust. It makes the best toast you&rsquo;ll
+        have all week, and it&rsquo;s the perfect partner for a tray of prepared meals from Antonio&rsquo;s.
+      </p>
+      <a href={business.izzys.phoneHref} class="btn-wine mt-6">Call to reserve a loaf</a>
+    </div>
+  </section>
+
+  <section class="container-x py-8">
+    <MenuList sections={sourdoughAndBreads} variant="bakery" />
+    <p class="mt-8 text-center text-sm italic text-ink/55">
+      Items and prices are samples for the new site — confirm today&rsquo;s breads by calling
+      <a class="font-semibold text-wine hover:underline" href={business.izzys.phoneHref}>{business.izzys.phoneDisplay}</a>.
+    </p>
+  </section>
+
+  <div class="py-12">
+    <SectionCTA title="Bread for the whole table?" text="Ordering for a gathering or catering? Let us bake extra — just give us a heads up." variant="contact" tone="wine" />
+  </div>
+</Base>

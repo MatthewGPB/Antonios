@@ -1,0 +1,49 @@
+---
+import Base from '@layouts/Base.astro';
+import PageHeader from '@components/PageHeader.astro';
+import MenuList from '@components/MenuList.astro';
+import SectionCTA from '@components/SectionCTA.astro';
+import ImagePlaceholder from '@components/ImagePlaceholder.astro';
+import { breakfastAndDesserts } from '@data/menu';
+import { business } from '@data/business';
+---
+
+<Base
+  title="Breakfast & Desserts — Cinnamon Rolls, Cookies & More | Izzy's Bakery, Juno Beach"
+  description="Fresh breakfast pastries and desserts at Izzy's Bakery in Juno Beach, FL: cinnamon rolls, danishes, scones, muffins, brownies, black & white cookies, and fruit turnovers — baked daily."
+  path="/bakery/breakfast-and-desserts"
+  includeBakerySchema={true}
+>
+  <PageHeader
+    variant="bakery"
+    eyebrow="Fresh every morning"
+    title="Breakfast & dessert favorites"
+    lead="Start the morning with a warm cinnamon roll, or grab a box of cookies and brownies for later. The case is full of good stuff baked fresh each day — and it goes fast."
+  />
+
+  <section class="container-x grid items-center gap-10 py-12 lg:grid-cols-2">
+    <ImagePlaceholder src="/images/izzys-cinnamon-rolls-closeup.jpg" alt="Close-up of warm cinnamon rolls with cream cheese icing" ratio="4/3" variant="bakery" class="shadow-card" />
+    <div>
+      <p class="eyebrow mb-3" style="color:var(--berry)">Morning regulars</p>
+      <h2 class="font-display text-3xl font-semibold text-berry sm:text-4xl">The case fills up early</h2>
+      <p class="prose-warm mt-4">
+        Cinnamon rolls, danishes, scones, and muffins come out of the oven first thing, and the black &amp;
+        white cookies, brownies, and turnovers are right there beside them. Grab a few for the office or a
+        box for the table — and if you want a platter for a gathering, just ask.
+      </p>
+      <a href={business.izzys.phoneHref} class="btn-wine mt-6">Call {business.izzys.phoneDisplay}</a>
+    </div>
+  </section>
+
+  <section class="container-x py-8">
+    <MenuList sections={breakfastAndDesserts} variant="bakery" />
+    <p class="mt-8 text-center text-sm italic text-ink/55">
+      Items and prices are samples for the new site — confirm today&rsquo;s selection by calling
+      <a class="font-semibold text-wine hover:underline" href={business.izzys.phoneHref}>{business.izzys.phoneDisplay}</a>.
+    </p>
+  </section>
+
+  <div class="py-12">
+    <SectionCTA title="Need a dessert platter?" text="Cookies, brownies, and pastries arranged for parties and meetings — call ahead and we'll box it up." variant="contact" tone="wine" />
+  </div>
+</Base>

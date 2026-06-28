@@ -15,8 +15,8 @@ const quickLinks = [
 
 // Highlights shown in the Izzy's Bakery feature band below.
 const bakeryHighlights = [
-  { title: 'Custom Cakes', text: 'Birthday, celebration & wedding cakes to order.', href: '/bakery/cakes', img: '/images/izzys-custom-cake.jpg', alt: 'Custom decorated Italian celebration cake from Izzy\u2019s Bakery' },
-  { title: 'Pastries & Cannoli', text: 'Cannoli filled to order, sfogliatelle, tiramisù.', href: '/bakery/pastries-and-desserts', img: '/images/izzys-cannoli.jpg', alt: 'Tray of fresh cannoli and Italian pastries' },
+  { title: 'Sourdough & Breads', text: 'Naturally leavened sourdough, baked fresh daily.', href: '/bakery/sourdough-and-breads', img: '/images/izzys-sourdough.jpg', alt: 'Fresh sourdough loaves with a crackly crust from Izzy\u2019s Bakery' },
+  { title: 'Breakfast & Desserts', text: 'Cinnamon rolls, danishes, cookies, brownies & more.', href: '/bakery/breakfast-and-desserts', img: '/images/izzys-cinnamon-rolls.jpg', alt: 'Tray of fresh cinnamon rolls and breakfast pastries' },
 ];
 ---
 
@@ -79,12 +79,12 @@ const bakeryHighlights = [
           <p class="eyebrow mb-3" style="color:var(--berry)">The sweet side of the market</p>
           <h2 class="font-display text-3xl font-semibold text-berry sm:text-4xl lg:text-5xl">Izzy&rsquo;s Bakery</h2>
           <p class="prose-warm mt-4">
-            Tucked inside Antonio&rsquo;s, our family bakery turns out fresh Italian pastries, custom cakes,
-            cookies by the pound, and warm bread every day. Cannoli filled to order, rum cakes, and wedding
-            cakes worth the occasion.
+            Tucked inside Antonio&rsquo;s, our family bakery is best known for fresh, naturally leavened
+            sourdough — plus a case full of breakfast and dessert favorites baked every morning: cinnamon
+            rolls, danishes, scones, muffins, brownies, and black &amp; white cookies.
           </p>
           <div class="mt-7 flex flex-wrap gap-3">
-            <a href="/bakery/cakes" class="btn-wine">Order a Custom Cake</a>
+            <a href="/bakery/sourdough-and-breads" class="btn-wine">Our Sourdough</a>
             <a href="/bakery" class="btn-outline">Visit Izzy&rsquo;s</a>
           </div>
         </div>
@@ -103,6 +103,39 @@ const bakeryHighlights = [
               </div>
             </a>
           ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Upper Crust Pies advertisement -->
+  <section class="container-x py-12">
+    <div class="relative overflow-hidden rounded-xl2 bg-forest p-8 text-cream shadow-lift sm:p-10 lg:p-12">
+      <div class="pointer-events-none absolute inset-0 opacity-20" aria-hidden="true">
+        <div class="absolute -left-16 -top-16 h-64 w-64 rounded-full bg-gold blur-3xl"></div>
+        <div class="absolute -bottom-20 -right-10 h-72 w-72 rounded-full bg-wine blur-3xl"></div>
+      </div>
+      <div class="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+        <div>
+          <p class="inline-flex items-center gap-2 rounded-full bg-gold/20 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-gold">
+            Now at Antonio&rsquo;s
+          </p>
+          <h2 class="mt-4 font-display text-3xl font-semibold text-cream sm:text-4xl lg:text-5xl">
+            Order <span class="text-gold">The Upper Crust</span> pies through us
+          </h2>
+          <p class="mt-4 max-w-xl text-cream/85">
+            We&rsquo;re a proud local distributor of Palm Beach County&rsquo;s legendary deep-dish pies —
+            30+ varieties, made the old-fashioned way. Skip the drive to Lake Worth and order your favorites
+            right here in Juno Beach.
+          </p>
+          <div class="mt-7 flex flex-wrap gap-3">
+            <a href="/upper-crust-pies" class="btn-gold">See the Pies</a>
+            <a href={business.phoneHref} class="btn-outline border-cream text-cream hover:bg-cream hover:text-forest">Call to Order</a>
+          </div>
+        </div>
+        <div class="relative">
+          <div class="absolute -inset-3 -z-10 rounded-[1.6rem] bg-gold/20" aria-hidden="true"></div>
+          <ImagePlaceholder src="/images/upper-crust-pie-home.jpg" alt="A deep-dish Upper Crust pie with a golden flaky crust" ratio="4/3" class="shadow-lift" />
         </div>
       </div>
     </div>

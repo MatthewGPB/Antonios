@@ -8,25 +8,26 @@ import { business } from '@data/business';
 ---
 
 <Base
-  title="Menu — Deli Counter, Hot Foods & Salads | Antonio's Italian Market"
-  description="See Antonio's Italian Market menu in Juno Beach, FL: imported deli meats and cheeses, hot foods like chicken parmigiana and sausage & peppers, fresh salads and sides."
+  title="Menu — Lasagna, Hot Dinners, Salads & More | Antonio's Italian Market"
+  description="Antonio's Italian Market menu in Juno Beach, FL: famous XL lasagna, chicken & eggplant parm, penne alla vodka, soups, big Italian salads, sides, and desserts. Order online or call."
   path="/menu"
 >
   <PageHeader
     eyebrow="The full menu"
-    title="Deli counter, hot foods & salads"
-    lead="Everything is sliced, cooked, and made fresh in our Juno Beach kitchen. Prices below are a guide — stop in or call for daily specials and market items."
+    title="Lasagna, hot dinners, salads & more"
+    lead="Our famous XL lasagna, parm dinners, fresh pastas, big Italian salads, soups, and desserts — all cooked fresh in our Juno Beach kitchen. Looking for subs and paninis? Those have their own page."
   />
 
   <section class="container-x py-12">
     <MenuList sections={deliMenu} />
     <p class="mt-8 text-center text-sm italic text-ink/55">
-      Menu and prices are samples for the new site and may change. Confirm current offerings by calling
-      <a class="font-semibold text-wine hover:underline" href={business.phoneHref}>{business.phoneDisplay}</a>.
+      Items and prices may change — confirm current offerings or place an order by calling
+      <a class="font-semibold text-wine hover:underline" href={business.phoneHref}>{business.phoneDisplay}</a>,
+      or <a class="font-semibold text-wine hover:underline" href={business.orderUrl} target="_blank" rel="noopener noreferrer">order online</a>.
     </p>
   </section>
 
   <div class="py-8">
-    <SectionCTA title="Skip the line — order ahead" text="Place your deli and hot-food order online and we'll have it ready." variant="order" />
+    <SectionCTA title="Skip the line — order ahead" text="Place your order online and we'll have it ready for pickup." variant="order" />
   </div>
 </Base>

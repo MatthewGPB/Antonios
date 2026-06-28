@@ -6,14 +6,14 @@ import SectionCTA from '@components/SectionCTA.astro';
 import { business } from '@data/business';
 
 const cards = [
-  { title: 'Custom Cakes', text: 'Birthday, celebration, and wedding cakes made to order.', href: '/bakery/cakes', img: '/images/izzys-custom-cake.jpg', alt: 'Custom decorated Italian celebration cake from Izzy\u2019s Bakery' },
-  { title: 'Pastries & Desserts', text: 'Cannoli, sfogliatelle, tiramisù, cookies & fresh bread.', href: '/bakery/pastries-and-desserts', img: '/images/izzys-cannoli.jpg', alt: 'Tray of fresh cannoli and Italian pastries' },
+  { title: 'Sourdough & Breads', text: 'Naturally leavened sourdough and fresh-baked loaves, daily.', href: '/bakery/sourdough-and-breads', img: '/images/izzys-sourdough.jpg', alt: 'Fresh sourdough loaves with a crackly crust from Izzy\u2019s Bakery' },
+  { title: 'Breakfast & Desserts', text: 'Cinnamon rolls, danishes, scones, muffins, brownies, cookies & more.', href: '/bakery/breakfast-and-desserts', img: '/images/izzys-cinnamon-rolls.jpg', alt: 'Tray of fresh cinnamon rolls and breakfast pastries' },
 ];
 ---
 
 <Base
-  title="Izzy's Bakery — Fresh Italian Bakery in Juno Beach | Cakes, Cannoli & Bread"
-  description="Izzy's Bakery in Juno Beach, FL: custom cakes, cannoli, sfogliatelle, Italian cookies, and fresh-baked bread daily. Inside Antonio's Italian Market on US-1."
+  title="Izzy's Bakery — Fresh Sourdough, Breakfast & Desserts in Juno Beach"
+  description="Izzy's Bakery in Juno Beach, FL: fresh sourdough and breads baked daily, plus cinnamon rolls, danishes, scones, muffins, brownies, and black & white cookies. Inside Antonio's Italian Market on US-1."
   path="/bakery"
   includeBakerySchema={true}
 >
@@ -21,16 +21,32 @@ const cards = [
     variant="bakery"
     eyebrow="Inside Antonio's · Juno Beach"
     title="Izzy's Bakery"
-    subtitle="Our family bakery turns out fresh Italian pastries, custom cakes, cookies by the pound, and warm bread every day. The sweet side of the market."
-    imageSrc="/images/izzys-pastry-case.jpg"
-    imageAlt="Izzy's Bakery pastry case filled with cannoli, cakes, and cookies"
+    subtitle="Our family bakery is best known for fresh, naturally leavened sourdough — plus a case full of breakfast and dessert favorites baked every morning. The sweet side of the market."
+    imageSrc="/images/izzys-sourdough-hero.jpg"
+    imageAlt="Izzy's Bakery sourdough loaves and fresh breads on the counter"
   >
-    <a slot="actions" href="/bakery/cakes" class="btn-wine">Order a Custom Cake</a>
-    <a slot="actions" href="/bakery/pastries-and-desserts" class="btn-outline">Browse Pastries</a>
+    <a slot="actions" href="/bakery/sourdough-and-breads" class="btn-wine">Our Sourdough</a>
+    <a slot="actions" href="/bakery/breakfast-and-desserts" class="btn-outline">Breakfast &amp; Desserts</a>
     <a slot="actions" href={business.izzys.phoneHref} class="btn-outline">Call {business.izzys.phoneDisplay}</a>
   </Hero>
 
-  <section class="container-x py-12">
+  <!-- Sourdough spotlight -->
+  <section class="container-x grid items-center gap-10 py-12 lg:grid-cols-2">
+    <ImagePlaceholder src="/images/izzys-sourdough-crumb.jpg" alt="Sliced sourdough showing an open, airy crumb" ratio="4/3" variant="bakery" class="shadow-card" />
+    <div>
+      <p class="eyebrow mb-3" style="color:var(--berry)">What we're known for</p>
+      <h2 class="font-display text-3xl font-semibold text-berry sm:text-4xl">Real sourdough, the slow way</h2>
+      <p class="prose-warm mt-4">
+        We let our dough ferment slowly for a deep flavor and that signature crackly crust. It sells out, so
+        it&rsquo;s worth calling ahead or stopping in early. Grab a loaf to go with tonight&rsquo;s dinner
+        from Antonio&rsquo;s &mdash; they&rsquo;re made for each other.
+      </p>
+      <a href="/bakery/sourdough-and-breads" class="btn-wine mt-6">See our breads</a>
+    </div>
+  </section>
+
+  <!-- Two category cards -->
+  <section class="container-x py-8">
     <div class="grid gap-8 md:grid-cols-2">
       {cards.map((c) => (
         <a href={c.href} class="group flex flex-col overflow-hidden rounded-xl2 border border-berry/15 bg-cream/60 shadow-card transition hover:-translate-y-1 hover:shadow-lift">
@@ -48,13 +64,25 @@ const cards = [
     </div>
   </section>
 
+  <!-- Upper Crust cross-link -->
+  <section class="container-x py-8">
+    <div class="flex flex-col items-center justify-between gap-4 rounded-xl2 border border-gold/30 bg-gold/10 p-8 text-center sm:flex-row sm:text-left">
+      <div>
+        <p class="eyebrow mb-2">Also at the counter</p>
+        <h2 class="font-display text-2xl text-forest">Craving pie? We carry The Upper Crust.</h2>
+        <p class="prose-warm mt-2">Order Palm Beach County&rsquo;s legendary deep-dish pies right through Antonio&rsquo;s.</p>
+      </div>
+      <a href="/upper-crust-pies" class="btn-gold shrink-0">Order Pies</a>
+    </div>
+  </section>
+
   <!-- Cross-link back to Antonio's -->
   <section class="container-x py-8">
     <div class="flex flex-col items-center justify-between gap-4 rounded-xl2 border border-ink/10 bg-forest/5 p-8 text-center sm:flex-row sm:text-left">
       <div>
         <p class="eyebrow mb-2">Part of the family</p>
-        <h2 class="font-display text-2xl text-forest">Pair your dessert with dinner from Antonio&rsquo;s</h2>
-        <p class="prose-warm mt-2">Grab a tray of prepared meals or cater your party — and let Izzy&rsquo;s handle the sweets.</p>
+        <h2 class="font-display text-2xl text-forest">Pair fresh bread with dinner from Antonio&rsquo;s</h2>
+        <p class="prose-warm mt-2">Grab a tray of prepared meals or cater your party &mdash; and let Izzy&rsquo;s handle the bread and sweets.</p>
       </div>
       <div class="flex shrink-0 gap-3">
         <a href="/prepared-meals" class="btn-forest">Prepared Meals</a>
@@ -64,6 +92,6 @@ const cards = [
   </section>
 
   <div class="py-8">
-    <SectionCTA title="Need a cake for the weekend?" text="Custom cakes need about 72 hours' notice — let's start your order." variant="contact" tone="wine" />
+    <SectionCTA title="Stop in for fresh sourdough" text="Loaves sell out — call ahead and we'll set one aside for you." variant="contact" tone="wine" />
   </div>
 </Base>

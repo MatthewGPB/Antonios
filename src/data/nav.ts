@@ -17,8 +17,9 @@ export const primaryNav: NavItem[] = [
     href: '/bakery',
     children: [
       { label: "Izzy's Bakery", href: '/bakery' },
-      { label: 'Custom Cakes', href: '/bakery/cakes' },
-      { label: 'Pastries & Desserts', href: '/bakery/pastries-and-desserts' },
+      { label: 'Sourdough & Breads', href: '/bakery/sourdough-and-breads' },
+      { label: 'Breakfast & Desserts', href: '/bakery/breakfast-and-desserts' },
+      { label: 'Upper Crust Pies', href: '/upper-crust-pies' },
     ],
   },
   { label: 'About', href: '/about' },

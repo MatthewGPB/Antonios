@@ -1,0 +1,110 @@
+---
+import Base from '@layouts/Base.astro';
+import ImagePlaceholder from '@components/ImagePlaceholder.astro';
+import { business } from '@data/business';
+
+const pieOrderUrl = business.upperCrust.orderUrl;
+
+const favorites = [
+  'Apple', 'Key Lime', 'Coconut Cream', 'Banana Cream',
+  'Pecan', 'Blueberry', 'Strawberry Rhubarb', 'Pumpkin',
+  'Cherry', 'Lemon Meringue', 'Chocolate Cream', 'Peach',
+];
+---
+
+<Base
+  title="Order The Upper Crust Pies in Juno Beach | Antonio's Italian Market"
+  description="Antonio's Italian Market is your Juno Beach spot to order The Upper Crust pies — Palm Beach County's legendary deep-dish pies. 30+ varieties, made the old-fashioned way. Order online or call, with holiday pre-orders available."
+  path="/upper-crust-pies"
+>
+  <!-- Advertisement hero -->
+  <section class="relative overflow-hidden bg-forest text-cream">
+    <div class="pointer-events-none absolute inset-0 opacity-20" aria-hidden="true">
+      <div class="absolute -left-20 -top-16 h-72 w-72 rounded-full bg-gold blur-3xl"></div>
+      <div class="absolute -bottom-24 right-0 h-80 w-80 rounded-full bg-wine blur-3xl"></div>
+    </div>
+    <div class="container-x grid items-center gap-10 py-16 lg:grid-cols-2 lg:py-20">
+      <div class="reveal">
+        <p class="inline-flex items-center gap-2 rounded-full bg-gold/20 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-gold">
+          Now taking pie orders
+        </p>
+        <h1 class="mt-5 font-display text-4xl font-semibold text-cream sm:text-5xl lg:text-6xl">
+          Order <span class="text-gold">The Upper Crust</span> pies through Antonio&rsquo;s
+        </h1>
+        <p class="mt-5 max-w-xl text-lg text-cream/85">
+          We&rsquo;re proud to carry Palm Beach County&rsquo;s legendary deep-dish pies right here in Juno
+          Beach. Skip the drive to Lake Worth — order your favorites through us.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href={pieOrderUrl} target="_blank" rel="noopener noreferrer" class="btn-gold">Order Pies Online</a>
+          <a href={business.phoneHref} class="btn-outline border-cream text-cream hover:bg-cream hover:text-forest">Call to Order {business.phoneDisplay}</a>
+        </div>
+      </div>
+      <div class="reveal" style="animation-delay:120ms">
+        <div class="relative">
+          <div class="absolute -inset-3 -z-10 rounded-[1.6rem] bg-gold/25" aria-hidden="true"></div>
+          <ImagePlaceholder src="/images/upper-crust-apple-pie.jpg" alt="A deep-dish Upper Crust apple pie with a flaky golden crust" ratio="4/3" class="shadow-lift" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why they're special -->
+  <section class="container-x grid items-center gap-10 py-14 lg:grid-cols-2">
+    <div>
+      <p class="eyebrow mb-3">A Palm Beach County icon</p>
+      <h2 class="font-display text-3xl font-semibold sm:text-4xl">Made the old-fashioned way since 1978</h2>
+      <p class="prose-warm mt-4">
+        The Upper Crust has been a family-owned Lake Worth institution for more than 45 years, with over 30
+        varieties of pie. They&rsquo;re known for deep-dish pies, flaky homemade crusts, and real fruit —
+        no canned filling. Now you can get them without leaving Juno Beach.
+      </p>
+      <ul class="mt-6 space-y-3 text-ink/80">
+        <li class="flex items-start gap-3"><span class="mt-1 text-gold">●</span> 9-inch deep-dish pies that serve about 8</li>
+        <li class="flex items-start gap-3"><span class="mt-1 text-gold">●</span> Fruit, cream, and meringue pies — 30+ varieties</li>
+        <li class="flex items-start gap-3"><span class="mt-1 text-gold">●</span> Stay fresh for days — perfect to keep on hand</li>
+      </ul>
+    </div>
+    <ImagePlaceholder src="/images/upper-crust-variety.jpg" alt="An assortment of Upper Crust fruit and cream pies" ratio="4/3" class="shadow-card" />
+  </section>
+
+  <!-- Flavors -->
+  <section class="container-x py-8">
+    <div class="rounded-xl2 border border-ink/10 bg-cream/60 p-8 shadow-card sm:p-10">
+      <div class="max-w-2xl">
+        <p class="eyebrow mb-3">Crowd favorites</p>
+        <h2 class="font-display text-3xl font-semibold sm:text-4xl">Pick your pie</h2>
+        <p class="prose-warm mt-3">A rotating selection of 30+ flavors. Here are some of the regulars — ask us what&rsquo;s available today.</p>
+      </div>
+      <ul class="mt-6 flex flex-wrap gap-2.5">
+        {favorites.map((f) => (
+          <li class="rounded-full border border-gold/40 bg-gold/10 px-4 py-2 text-sm font-semibold text-ink">{f}</li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Holiday pre-order callout -->
+  <section class="container-x py-12">
+    <div class="relative overflow-hidden rounded-xl2 bg-wine px-6 py-12 text-center text-cream shadow-lift sm:px-12">
+      <div class="pointer-events-none absolute inset-0 opacity-10" aria-hidden="true">
+        <div class="absolute -left-10 -top-10 h-48 w-48 rounded-full bg-gold blur-2xl"></div>
+        <div class="absolute -bottom-10 -right-10 h-56 w-56 rounded-full bg-cream blur-3xl"></div>
+      </div>
+      <h2 class="font-display text-3xl font-semibold text-cream sm:text-4xl">Be a holiday hero — pre-order your pies</h2>
+      <p class="mx-auto mt-3 max-w-xl text-cream/85">
+        Thanksgiving, Christmas, and Easter sell out fast. Reserve your Upper Crust pies through Antonio&rsquo;s
+        early so you&rsquo;re covered when it counts.
+      </p>
+      <div class="mt-7 flex flex-wrap justify-center gap-3">
+        <a href={pieOrderUrl} target="_blank" rel="noopener noreferrer" class="btn-gold">Order Online</a>
+        <a href={business.phoneHref} class="btn-outline border-cream text-cream hover:bg-cream hover:text-wine">Call {business.phoneDisplay}</a>
+      </div>
+    </div>
+  </section>
+
+  <p class="container-x pb-12 text-center text-sm italic text-ink/55">
+    The Upper Crust pies are baked by The Upper Crust of Lake Worth, FL and carried by Antonio&rsquo;s Italian Market.
+    Available flavors and pricing vary — call for current selection.
+  </p>
+</Base>
