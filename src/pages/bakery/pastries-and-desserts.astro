@@ -1,43 +1,19 @@
 ---
-import Base from '@layouts/Base.astro';
-import PageHeader from '@components/PageHeader.astro';
-import MenuList from '@components/MenuList.astro';
-import SectionCTA from '@components/SectionCTA.astro';
-import ImagePlaceholder from '@components/ImagePlaceholder.astro';
-import { pastries } from '@data/menu';
+// This URL was renamed to /bakery/breakfast-and-desserts. Redirect here so old
+// links and search results don't 404, and to overwrite any stale old file.
+const dest = '/bakery/breakfast-and-desserts';
 ---
-
-<Base
-  title="Italian Pastries & Cannoli — Izzy's Bakery, Juno Beach | Tiramisù, Biscotti & Bread"
-  description="Fresh Italian pastries in Juno Beach, FL: cannoli filled to order, sfogliatelle, lobster tails, tiramisù, biscotti, Italian cookies, and fresh-baked bread daily at Izzy's Bakery."
-  path="/bakery/pastries-and-desserts"
-  includeBakerySchema={true}
->
-  <PageHeader
-    variant="bakery"
-    eyebrow="Fresh from the case"
-    title="Pastries, cannoli & fresh bread"
-    lead="The case is full every day with cannoli filled to order, flaky sfogliatelle, tiramisù, cookies by the pound, and warm Italian bread. Perfect for dessert trays and last-minute gatherings."
-  />
-
-  <section class="container-x grid items-center gap-10 py-12 lg:grid-cols-2">
-    <ImagePlaceholder src="/images/izzys-cannoli-closeup.jpg" alt="Close-up of cannoli filled to order with sweet ricotta" ratio="4/3" variant="bakery" class="shadow-card" />
-    <div>
-      <p class="eyebrow mb-3">Filled to order</p>
-      <h2 class="font-display text-3xl font-semibold text-berry sm:text-4xl">Cannoli the way it should be</h2>
-      <p class="prose-warm mt-4">
-        We never pre-fill our cannoli — the shells stay crisp until you order, then we pipe them with sweet
-        ricotta and finish with chocolate chips or pistachio. Order a tray for the table and watch them
-        disappear.
-      </p>
-    </div>
-  </section>
-
-  <section class="container-x py-8">
-    <MenuList sections={pastries} variant="bakery" />
-  </section>
-
-  <div class="py-12">
-    <SectionCTA title="Need a dessert tray?" text="Cookies by the pound and cannoli trays for parties — call ahead and we'll have it boxed." variant="contact" tone="wine" />
-  </div>
-</Base>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="refresh" content={`0; url=${dest}`} />
+    <link rel="canonical" href={dest} />
+    <meta name="robots" content="noindex, follow" />
+    <title>Page moved — Breakfast &amp; Desserts</title>
+  </head>
+  <body>
+    <p>This page has moved. <a href={dest}>Continue to Breakfast &amp; Desserts</a>.</p>
+    <script is:inline>window.location.replace('/bakery/breakfast-and-desserts');</script>
+  </body>
+</html>

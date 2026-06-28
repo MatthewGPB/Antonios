@@ -1,50 +1,21 @@
 ---
-import Base from '@layouts/Base.astro';
-import PageHeader from '@components/PageHeader.astro';
-import MenuList from '@components/MenuList.astro';
-import ImagePlaceholder from '@components/ImagePlaceholder.astro';
-import CateringForm from '@components/CateringForm.astro';
-import { cakes } from '@data/menu';
-import { business } from '@data/business';
+// This page used to be "Custom Cakes". Izzy's no longer offers custom cakes,
+// so this URL now redirects to the Izzy's Bakery landing page. Keeping a valid
+// file here also prevents stale-copy build errors if the old file lingers in a
+// repo after a file upload (GitHub "Upload files" does not delete old files).
+const dest = '/bakery';
 ---
-
-<Base
-  title="Custom Cakes — Birthday & Wedding Cakes Near You | Izzy's Bakery, Juno Beach"
-  description="Custom cakes in Juno Beach, FL from Izzy's Bakery: birthday cakes, celebration cakes, and wedding cakes. Italian rum cake, tiramisù cake, cannoli cream cake — made to order."
-  path="/bakery/cakes"
-  includeBakerySchema={true}
->
-  <PageHeader
-    variant="bakery"
-    eyebrow="Made to order"
-    title="Custom cakes for every celebration"
-    lead="Birthdays, anniversaries, graduations, and weddings — Izzy's bakes Italian-style cakes to your colors, flavors, and design. Most custom cakes need about 72 hours' notice; weddings, a little more."
-  />
-
-  <section class="container-x grid items-center gap-10 py-12 lg:grid-cols-2">
-    <ImagePlaceholder src="/images/izzys-wedding-cake.jpg" alt="Tiered Italian wedding cake from Izzy's Bakery" ratio="3/4" variant="bakery" class="shadow-card" />
-    <div>
-      <p class="eyebrow mb-3">Flavors to start from</p>
-      <h2 class="font-display text-3xl font-semibold text-berry sm:text-4xl">Our most-requested cakes</h2>
-      <p class="prose-warm mt-4">
-        These are favorites — but almost everything is customizable. Tell us the occasion and we&rsquo;ll
-        help you design something special. Tastings for wedding cakes are available by appointment.
-      </p>
-      <a href={business.izzys.phoneHref} class="btn-wine mt-6">Call {business.izzys.phoneDisplay}</a>
-    </div>
-  </section>
-
-  <section class="container-x py-8">
-    <MenuList sections={cakes} variant="bakery" />
-  </section>
-
-  <section class="container-x py-12">
-    <div class="mx-auto max-w-2xl rounded-xl2 border border-berry/15 bg-cream/60 p-6 shadow-card sm:p-8">
-      <h2 class="font-display text-3xl font-semibold text-berry">Start your cake order</h2>
-      <p class="prose-warm mt-2">Use &ldquo;event date&rdquo; for the day you need it, and tell us the occasion, size, flavors, and any design ideas in the message.</p>
-      <div class="mt-6">
-        <CateringForm />
-      </div>
-    </div>
-  </section>
-</Base>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="refresh" content={`0; url=${dest}`} />
+    <link rel="canonical" href={dest} />
+    <meta name="robots" content="noindex, follow" />
+    <title>Page moved — Izzy's Bakery</title>
+  </head>
+  <body>
+    <p>This page has moved. <a href={dest}>Continue to Izzy&rsquo;s Bakery</a>.</p>
+    <script is:inline>window.location.replace('/bakery');</script>
+  </body>
+</html>
