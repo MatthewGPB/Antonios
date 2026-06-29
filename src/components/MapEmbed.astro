@@ -4,7 +4,7 @@ import { business } from '@data/business';
 // A keyless Google Maps embed using the public "q=" output mode.
 // Works with no API key. If you later add a Maps Embed API key, swap the src for:
 // https://www.google.com/maps/embed/v1/place?key=YOUR_KEY&q=ENCODED_ADDRESS
-const query = encodeURIComponent(business.address.full);
+const query = encodeURIComponent(`${business.name}, ${business.address.full}`);
 const src = `https://www.google.com/maps?q=${query}&output=embed`;
 ---
 

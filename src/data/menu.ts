@@ -67,18 +67,18 @@ const salads: MenuSection = {
   items: [
     { name: 'The Sicilian', description: 'Grilled chicken, romaine, mozzarella, avocado, toasted almonds, tomatoes, balsamic', price: '$15.99' },
     { name: 'The Bari', description: 'Breaded chicken cutlet, romaine, tomatoes, Gaeta olives, red onion, roasted peppers, shaved Parmigiano, balsamic', price: '$15.99' },
-    { name: 'The Tuscano (Antipasto)', description: 'Romaine, tomatoes, black olives, Genoa salami, provolone, artichokes, roasted peppers, Italian dressing', price: '$15.99', tag: 'Popular' },
+    { name: 'The Tuscano (Antipasto)', description: 'Romaine, tomatoes, black olives, Genoa salami, provolone, artichokes, roasted peppers, Italian dressing', price: '$14.99', tag: 'Popular' },
     { name: 'The Campania', description: 'Romaine, walnuts, green apple, craisins, gorgonzola, raspberry-walnut vinaigrette', price: '$14.95' },
     { name: 'Trio Salad', description: 'Egg, chicken and tuna on a house salad', price: '$14.95' },
     { name: 'The Milano', description: 'Mixed greens, sliced pears, gorgonzola, toasted pecans, honey mustard', price: '$13.99' },
     { name: 'Chef Salad', description: 'Mixed greens, ham, turkey, tomatoes, cucumbers, hard-boiled egg', price: '$13.99' },
-    { name: 'The Alitalia (Caprese)', description: 'Romaine, tomatoes, fresh mozzarella, basil, oil and balsamic', price: '$12.99' },
+    { name: 'The Alitalia (Caprese)', description: 'Romaine, tomatoes, fresh mozzarella, basil, oil and balsamic', price: '$11.99' },
     { name: 'Greek Salad', description: 'Lettuce, tomatoes, cucumbers, red onions, black olives, feta', price: '$11.99' },
     { name: 'Blue Cheese & Blueberry', description: 'Lettuce, cherry tomatoes, cucumber, red onions, blueberries, blue cheese', price: '$11.99' },
     { name: 'Strawberry & Feta', description: 'Spinach, strawberries, feta, cherry tomatoes, red onion, cucumber', price: '$10.99' },
     { name: 'Wedge Salad', description: 'Iceberg, blue cheese, bacon, tomato, red onion', price: '$10.99' },
     { name: 'Large House Salad', description: 'Lettuce, cherry tomatoes, cucumbers, carrots, red onion', price: '$10.99' },
-    { name: 'Large Caesar', description: 'Romaine, croutons, parmesan, Caesar dressing', price: '$11.99' },
+    { name: 'Large Caesar', description: 'Romaine, croutons, parmesan, Caesar dressing', price: '$10.99' },
     { name: 'Caesar Side Salad', price: '$6.99' },
     { name: 'Small House Salad', price: '$6.99' },
   ],
@@ -170,11 +170,11 @@ export const preparedMeals: MenuSection[] = [lasagnas, hotDinners];
 const hotSubs: MenuSection = {
   title: 'Hot Subs & Melts',
   items: [
-    { name: 'Il Antonio', description: 'Our famous homemade sausage (mild or spicy), peppers, onions, marinara', price: '$14.99', tag: 'House-made' },
+    { name: 'Il Antonio', description: 'Our famous homemade sausage (mild or spicy), peppers, onions, marinara', price: '$13.99', tag: 'House-made' },
     { name: 'Chicken Parm Sub', description: 'Breaded chicken, marinara, provolone, parmesan, toasted roll', price: '$14.99' },
     { name: 'Eggplant Parm Sub', description: 'Layered eggplant in marinara, melted parmesan', price: '$14.99' },
     { name: 'The Ultimate Melt', description: 'Chicken or eggplant, homemade sauce, imported provolone (also as a panini)', price: '$19.99' },
-    { name: 'Bella Melt', description: 'Chicken, eggplant or pepperoni, roasted red peppers, hot capicola, provolone, blue cheese', price: '$18.49' },
+    { name: 'Bella Melt', description: 'Chicken, eggplant or pepperoni, roasted red peppers, hot capicola, provolone, blue cheese', price: '$13.99' },
     { name: 'Hot Roast Beef', description: 'Roast beef, provolone (onions and mushrooms optional)', price: '$13.95' },
     { name: 'Meatball Sub', description: 'Meatballs, cheese and marinara', price: '$13.95' },
     { name: 'Grilled Chicken Teriyaki Sub', description: 'Teriyaki chicken, mayo, lettuce, tomato, fresh-baked roll', price: '$13.99' },
@@ -186,20 +186,20 @@ const hotSubs: MenuSection = {
 const coldSubs: MenuSection = {
   title: 'Cold Subs, Clubs & Wraps',
   items: [
-    { name: 'Combo Italiano Sub', description: 'Ham, Genoa, capicola, mortadella, provolone, romaine, tomato, onion, banana peppers, oregano', price: '$14.99', tag: 'Signature' },
-    { name: 'Italian Club', description: 'Imported prosciutto, fresh mozzarella, sweet red peppers, balsamic, olive oil, basil', price: '$14.99', tag: 'Signature' },
-    { name: 'Turkey Club', description: 'Oven-roasted turkey, smoked bacon, romaine, tomato, mayo', price: '$14.99' },
+    { name: 'Combo Italiano Sub', description: 'Ham, Genoa, capicola, mortadella, provolone, romaine, tomato, onion, banana peppers, oregano', price: '$13.99', tag: 'Signature' },
+    { name: 'Italian Club', description: 'Imported prosciutto, fresh mozzarella, sweet red peppers, balsamic, olive oil, basil', price: '$13.99', tag: 'Signature' },
+    { name: 'Turkey Club', description: 'Oven-roasted turkey, smoked bacon, romaine, tomato, mayo', price: '$13.99' },
     { name: 'Beach Club', description: 'Turkey, ham, bacon, lettuce, tomato, mayo on a soft roll', price: '$14.99' },
-    { name: 'Cranberry-Walnut Chicken Salad', description: 'On soft white, whole wheat, Italian bread or a wrap', price: '$13.99' },
-    { name: 'Classic BLT', description: 'Crispy bacon, lettuce, tomato, mayo (also as a panini)', price: '$13.99' },
+    { name: 'Cranberry-Walnut Chicken Salad', description: 'On soft white, whole wheat, Italian bread or a wrap', price: '$11.99' },
+    { name: 'Classic BLT', description: 'Crispy bacon, lettuce, tomato, mayo (also as a panini)', price: '$11.99' },
     { name: 'Turkey Reuben', description: 'Sliced turkey, Swiss, sauerkraut, Thousand Island, rye', price: '$13.99' },
     { name: 'Ham & Swiss', description: 'Ham, Swiss, lettuce, pickles, fresh-baked roll', price: '$13.99' },
     { name: 'Sliced Cold Roast Beef Sub', description: 'Roast beef, lettuce, tomato, choice of cheese', price: '$13.95' },
-    { name: 'Chicken Salad Sandwich', description: 'On soft white, whole wheat, Italian bread or a wrap', price: '$12.99' },
-    { name: 'Tuna Salad Sandwich', description: 'On soft white, whole wheat, Italian bread or a wrap', price: '$12.99' },
+    { name: 'Chicken Salad Sandwich', description: 'On soft white, whole wheat, Italian bread or a wrap', price: '$10.99' },
+    { name: 'Tuna Salad Sandwich', description: 'On soft white, whole wheat, Italian bread or a wrap', price: '$10.99' },
     { name: 'Chicken Caesar Wrap', description: 'Chicken and romaine in creamy Caesar', price: '$12.99' },
     { name: 'Veggie Wrap', description: 'Grilled peppers, onions, mushrooms, broccoli, cheese, lettuce, tomato, mayo', price: '$12.99' },
-    { name: 'Egg Salad Sandwich', description: 'On soft white, whole wheat, Italian bread or a wrap', price: '$11.99' },
+    { name: 'Egg Salad Sandwich', description: 'On soft white, whole wheat, Italian bread or a wrap', price: '$10.99' },
     { name: 'Fresh Raw Veggie Sub', description: 'Choice of cheese and condiments', price: '$11.99' },
   ],
 };
@@ -208,22 +208,23 @@ const paninis: MenuSection = {
   title: 'Paninis',
   note: 'Pressed on ciabatta. Most can be made as a sandwich on request.',
   items: [
-    { name: 'The Anna', description: 'Breaded chicken cutlet, fresh mozzarella, tomato, red onion, herb mayo', price: '$15.99', tag: 'Popular' },
-    { name: 'The Vito', description: 'Grilled chicken, roasted red peppers, basil pesto, fresh mozzarella, romaine', price: '$15.99', tag: 'Popular' },
+    { name: 'The Anna', description: 'Breaded chicken cutlet, fresh mozzarella, tomato, red onion, herb mayo', price: '$13.99', tag: 'Popular' },
+    { name: 'The Vito', description: 'Grilled chicken, roasted red peppers, basil pesto, fresh mozzarella, romaine', price: '$13.99', tag: 'Popular' },
     { name: 'The Domenico', description: 'Grilled chicken, black olive paste, grilled zucchini, fresh mozzarella', price: '$15.99' },
-    { name: 'The Angelo', description: 'Imported prosciutto, mozzarella, mixed greens', price: '$15.99' },
+    { name: 'The Angelo', description: 'Imported prosciutto, mozzarella, mixed greens', price: '$13.99' },
     { name: 'Buffalo Blue Cheese', description: 'Fried chicken cutlet in buffalo sauce, blue cheese crumbles, lettuce, tomato, onion', price: '$15.99' },
     { name: 'Grilled Veggie', description: 'Seasonal grilled veggies, provolone, everything seasoning, balsamic glaze, pesto', price: '$15.99' },
     { name: 'The Gina', description: 'Grilled shrimp, herb aioli, mixed greens', price: '$16.99' },
-    { name: 'The Vincenzo', description: 'House sausage (mild or hot), broccoli rabe, black olive paste', price: '$14.99', tag: 'House-made' },
-    { name: 'The Rosanna', description: 'Fresh mozzarella, tomato, basil, olive oil', price: '$14.99' },
-    { name: 'The Nicoletta', description: 'Grilled vegetables, fresh tomatoes, fresh mozzarella', price: '$13.99' },
+    { name: 'The Vincenzo', description: 'House sausage (mild or hot), broccoli rabe, black olive paste', price: '$13.99', tag: 'House-made' },
+    { name: 'The Rosanna', description: 'Fresh mozzarella, tomato, basil, olive oil', price: '$12.99' },
+    { name: 'The Nicoletta', description: 'Grilled vegetables, fresh tomatoes, fresh mozzarella', price: '$12.99' },
     { name: 'Cuban', description: 'Roasted pork, ham, Swiss, pickles, mustard, pressed Cuban bread', price: '$13.99' },
   ],
 };
 
 /** Shown on /subs-and-sandwiches */
 export const subsMenu: MenuSection[] = [coldSubs, hotSubs, paninis];
+
 
 /* ===================== CATERING ===================== */
 /* Catering is by quote — these trays mirror the menu. Pricing is a sample; we
@@ -269,9 +270,9 @@ export const sourdoughAndBreads: MenuSection[] = [
     title: 'Fresh Sourdough',
     note: 'Our pride and joy — naturally leavened and baked fresh. Limited quantities, so call ahead or come early.',
     items: [
-      { name: 'Country Sourdough Loaf', description: 'Crackly crust, open crumb, slow-fermented', price: 'Mkt', tag: 'Signature' },
-      { name: 'Sourdough Boule', description: 'Round artisan loaf, perfect for the table', price: 'Mkt', tag: 'Popular' },
-      { name: 'Sliced Sandwich Sourdough', description: 'Soft-crust pan loaf, great for toast', price: 'Mkt' },
+      { name: 'Country Sourdough Loaf', description: 'Crackly crust, open crumb, slow-fermented', price: '$10.00', tag: 'Signature' },
+      { name: 'Sourdough Boule', description: 'Round artisan loaf, perfect for the table', price: '$10.00', tag: 'Popular' },
+      { name: 'Sliced Sandwich Sourdough', description: 'Soft-crust pan loaf, great for toast', price: '$10.00' },
     ],
   },
   {

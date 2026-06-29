@@ -23,7 +23,7 @@ const flatLinks = primaryNav.flatMap((i) => (i.children ? i.children : [i]));
       </p>
       <div class="mt-6 space-y-1.5 text-sm">
         <p>
-          <a class="hover:text-gold" href={`https://maps.google.com/?q=${encodeURIComponent(business.address.full)}`} target="_blank" rel="noopener noreferrer">
+          <a class="hover:text-gold" href={`${business.mapsUrl}`} target="_blank" rel="noopener noreferrer">
             {business.address.full}
           </a>
         </p>

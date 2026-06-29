@@ -43,14 +43,18 @@ export const business = {
   phoneDisplay: '(561) 625-6544',
   phoneHref: 'tel:+15616256544',
 
-  email: '{{CONTACT_EMAIL}}', // e.g. hello@antoniositalianmarket.net — a professional address, NOT an AOL/Gmail account
+  email: 'basnight04@aol.com', // client-provided contact email
 
   // Lat/Lng for LocalBusiness geo + map. Approximate for 12214 US-1, Juno Beach.
   // Replace with the exact pin from Google Business Profile if you have it.
+  // Exact coordinates from the business's Google Maps listing.
   geo: {
-    latitude: 26.8806,
-    longitude: -80.0564,
+    latitude: 26.8552634,
+    longitude: -80.0569413,
   },
+
+  // Verified Google Maps link to the business (used for directions / view-on-map).
+  mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Antonio%27s%20Italian%20Market%2C%2012214%20US%20Highway%201%2C%20Juno%20Beach%2C%20FL%2033408',
 
   // --- Hours --- {{CONFIRM_HOURS}} confirm against Google Business Profile
   hours: [
