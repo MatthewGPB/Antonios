@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://www.antoniositalianmarket.net',
+  site: 'https://antoniospb.com',
   output: 'static',
   integrations: [
     tailwind({

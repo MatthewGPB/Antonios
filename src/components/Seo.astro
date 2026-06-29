@@ -12,9 +12,9 @@ export interface Props {
   includeBakerySchema?: boolean;
 }
 
-const { title, description, path, ogImage = '/images/og-default.jpg', includeBakerySchema = false } = Astro.props;
+const { title, description, path, ogImage = '/images/sub-combo-italiano.jpg', includeBakerySchema = false } = Astro.props;
 
-const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://www.antoniositalianmarket.net';
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://antoniospb.com';
 const canonical = `${siteUrl}${path === '/' ? '' : path}`;
 const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
 
