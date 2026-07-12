@@ -1,0 +1,163 @@
+---
+import Base from '@layouts/Base.astro';
+import ImagePlaceholder from '@components/ImagePlaceholder.astro';
+import { business } from '@data/business';
+
+const floral = business.directFloral;
+
+const offerings = [
+  {
+    title: 'Custom Orchid Arrangements',
+    text: 'Our signature. Taylor designs custom orchid arrangements to order — and if you have a favorite pot or planter, bring it in and we\u2019ll build the arrangement right in it.',
+    img: '/images/direct-floral-orchids.jpg',
+    alt: 'A custom orchid arrangement in a decorative pot',
+    tag: 'Signature',
+  },
+  {
+    title: 'Weddings, Parties & Events',
+    text: 'From intimate dinners to full weddings, business events, and celebrations — tell us the occasion and we\u2019ll design flowers to match it.',
+    img: '/images/direct-floral-event.jpg',
+    alt: 'Floral arrangements set up for a wedding event',
+  },
+  {
+    title: 'Homes & Churches',
+    text: 'Fresh arrangements for your home, and regular floral service for local churches. Many of our customers have been with us for years — word of mouth is how most people find us.',
+    img: '/images/direct-floral-home.jpg',
+    alt: 'A fresh floral arrangement displayed in a home',
+  },
+  {
+    title: 'Chocolate-Covered Strawberries',
+    text: 'A Direct Floral favorite — fresh chocolate-covered strawberries that pair perfectly with an arrangement for birthdays, anniversaries, and holidays.',
+    img: '/images/direct-floral-strawberries.jpg',
+    alt: 'Chocolate-covered strawberries arranged on a tray',
+    tag: 'Popular',
+  },
+];
+---
+
+<Base
+  title="Direct Floral — Fresh Flowers & Custom Orchid Arrangements | Juno Beach, FL"
+  description="Direct Floral, inside Antonio's Italian Market in Juno Beach, FL. Fresh Florida-grown flowers, custom orchid arrangements, and florals for weddings, events, homes, and churches. Call or come in — pickup and local delivery available."
+  path="/flowers"
+  includeFloristSchema={true}
+>
+  <!-- Brand hero -->
+  <section class="relative overflow-hidden bg-forest text-cream">
+    <div class="pointer-events-none absolute inset-0 opacity-20" aria-hidden="true">
+      <div class="absolute -left-20 -top-16 h-72 w-72 rounded-full bg-gold blur-3xl"></div>
+      <div class="absolute -bottom-24 right-0 h-80 w-80 rounded-full bg-wine blur-3xl"></div>
+    </div>
+    <div class="container-x grid items-center gap-10 py-16 lg:grid-cols-2 lg:py-20">
+      <div class="reveal">
+        <p class="inline-flex items-center gap-2 rounded-full bg-gold/20 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-gold">
+          Inside Antonio&rsquo;s Italian Market
+        </p>
+        <h1 class="mt-5 font-display text-4xl font-semibold text-cream sm:text-5xl lg:text-6xl">
+          <span class="text-gold">Direct Floral</span> — fresh flowers, done personally
+        </h1>
+        <p class="mt-5 max-w-xl text-lg text-cream/85">
+          Florida-grown flowers and custom arrangements, handled start to finish by one florist who
+          does it all. Custom orchids, event florals, and arrangements for homes and churches —
+          right here on US-1 in Juno Beach.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href={floral.phoneHref} class="btn-gold">Call to Order {floral.phoneDisplay}</a>
+          <a href="/contact" class="btn-outline border-cream text-cream hover:bg-cream hover:text-forest">Visit the Store</a>
+        </div>
+      </div>
+      <div class="reveal" style="animation-delay:120ms">
+        <div class="relative">
+          <div class="absolute -inset-3 -z-10 rounded-[1.6rem] bg-gold/25" aria-hidden="true"></div>
+          <ImagePlaceholder src="/images/direct-floral-hero.jpg" alt="A fresh custom floral arrangement from Direct Floral" ratio="4/3" class="shadow-lift" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Florida-grown story -->
+  <section class="container-x grid items-center gap-10 py-14 lg:grid-cols-2">
+    <div>
+      <p class="eyebrow mb-3">Locally &amp; Florida-grown</p>
+      <h2 class="font-display text-3xl font-semibold sm:text-4xl">Fresher flowers, closer to home</h2>
+      <p class="prose-warm mt-4">
+        Our flowers are locally sourced and Florida-grown — they spend less time in transit and more
+        time looking beautiful on your table. Every arrangement is made to order, so tell us the
+        occasion, the colors you love, or just your budget, and we&rsquo;ll take it from there.
+      </p>
+      <ul class="mt-6 space-y-3 text-ink/80">
+        <li class="flex items-start gap-3"><span class="mt-1 text-gold">●</span> Custom arrangements starting at $39.99</li>
+        <li class="flex items-start gap-3"><span class="mt-1 text-gold">●</span> Made-to-order arrangements — call or come in</li>
+        <li class="flex items-start gap-3"><span class="mt-1 text-gold">●</span> Pickup at the market, or delivery up to an hour away</li>
+        <li class="flex items-start gap-3"><span class="mt-1 text-gold">●</span> Bring your own pot or vase and we&rsquo;ll design in it</li>
+      </ul>
+    </div>
+    <ImagePlaceholder src="/images/direct-floral-fresh.jpg" alt="Fresh Florida-grown flowers ready for arranging" ratio="4/3" class="shadow-card" />
+  </section>
+
+  <!-- Offerings -->
+  <section class="container-x py-8">
+    <div class="max-w-2xl">
+      <p class="eyebrow mb-3">What we do</p>
+      <h2 class="font-display text-3xl font-semibold sm:text-4xl">Everything flowers</h2>
+    </div>
+    <div class="mt-8 grid gap-8 sm:grid-cols-2">
+      {offerings.map((o) => (
+        <div class="overflow-hidden rounded-xl2 border border-ink/10 bg-cream/60 shadow-card">
+          <ImagePlaceholder src={o.img} alt={o.alt} ratio="16/9" />
+          <div class="p-6">
+            <h3 class="flex flex-wrap items-center gap-2 font-display text-xl font-semibold text-forest">
+              {o.title}
+              {o.tag && (
+                <span class="rounded-full bg-gold/20 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-ink">{o.tag}</span>
+              )}
+            </h3>
+            <p class="mt-2 text-ink/70">{o.text}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- How to order -->
+  <section class="container-x py-12">
+    <div class="rounded-xl2 border border-ink/10 bg-cream/60 p-8 shadow-card sm:p-10">
+      <div class="grid gap-8 lg:grid-cols-3">
+        <div>
+          <p class="font-display text-lg font-semibold text-forest">1. Call or come in</p>
+          <p class="mt-2 text-ink/70">Flower orders are placed by phone or in person at the market — tell us what you need and when you need it.</p>
+        </div>
+        <div>
+          <p class="font-display text-lg font-semibold text-forest">2. We design it fresh</p>
+          <p class="mt-2 text-ink/70">Every arrangement is built to order with fresh, Florida-grown flowers — no pre-made grab-and-go here.</p>
+        </div>
+        <div>
+          <p class="font-display text-lg font-semibold text-forest">3. Pickup or delivery</p>
+          <p class="mt-2 text-ink/70">Pick up at Antonio&rsquo;s in Juno Beach, or we&rsquo;ll deliver — we travel up to an hour for events and special orders.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="container-x pb-12">
+    <div class="relative overflow-hidden rounded-xl2 bg-wine px-6 py-12 text-center text-cream shadow-lift sm:px-12">
+      <div class="pointer-events-none absolute inset-0 opacity-10" aria-hidden="true">
+        <div class="absolute -left-10 -top-10 h-48 w-48 rounded-full bg-gold blur-2xl"></div>
+        <div class="absolute -bottom-10 -right-10 h-56 w-56 rounded-full bg-cream blur-3xl"></div>
+      </div>
+      <h2 class="font-display text-3xl font-semibold text-cream sm:text-4xl">Planning an event or a special occasion?</h2>
+      <p class="mx-auto mt-3 max-w-xl text-cream/85">
+        Weddings, parties, church services, or just because — call Direct Floral and let&rsquo;s talk flowers.
+      </p>
+      <div class="mt-7 flex flex-wrap justify-center gap-3">
+        <a href={floral.phoneHref} class="btn-gold">Call {floral.phoneDisplay}</a>
+        <a href="/contact" class="btn-outline border-cream text-cream hover:bg-cream hover:text-wine">Find the Store</a>
+      </div>
+    </div>
+  </section>
+
+  <p class="container-x pb-12 text-center text-sm italic text-ink/55">
+    Direct Floral operates inside Antonio&rsquo;s Italian Market at {business.address.full}.
+    Arrangements start at $39.99 — availability and pricing vary by season and design, so call for details.
+  </p>
+</Base>

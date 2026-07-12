@@ -141,6 +141,36 @@ const bakeryHighlights = [
     </div>
   </section>
 
+  <!-- Direct Floral feature -->
+  <section class="container-x py-12">
+    <div class="relative overflow-hidden rounded-xl2 border border-gold/25 bg-gradient-to-br from-gold/10 via-cream to-forest/8 p-8 shadow-card sm:p-10 lg:p-12">
+      <div class="pointer-events-none absolute inset-0 -z-10 opacity-60" aria-hidden="true">
+        <div class="absolute -right-16 -top-16 h-64 w-64 rounded-full bg-gold/15 blur-3xl"></div>
+        <div class="absolute -bottom-20 -left-10 h-64 w-64 rounded-full bg-forest/10 blur-3xl"></div>
+      </div>
+      <div class="grid items-center gap-10 lg:grid-cols-2">
+        <div>
+          <p class="eyebrow mb-3">Fresh flowers, inside the market</p>
+          <h2 class="font-display text-3xl font-semibold text-forest sm:text-4xl lg:text-5xl">Direct Floral</h2>
+          <p class="prose-warm mt-4">
+            Florida-grown flowers, arranged to order right here in the store. Custom orchid
+            arrangements — bring your own pot and we&rsquo;ll design in it — plus florals for weddings,
+            events, homes, and churches, and chocolate-covered strawberries to go with them.
+            Arrangements start at $39.99.
+          </p>
+          <div class="mt-7 flex flex-wrap gap-3">
+            <a href="/flowers" class="btn-wine">See Our Flowers</a>
+            <a href={business.directFloral.phoneHref} class="btn-outline">Call to Order</a>
+          </div>
+        </div>
+        <div class="relative">
+          <div class="absolute -inset-3 -z-10 rounded-[1.6rem] bg-gold/20" aria-hidden="true"></div>
+          <ImagePlaceholder src="/images/direct-floral-home.jpg" alt="A custom orchid arrangement from Direct Floral" ratio="4/3" class="shadow-lift" />
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Story strip -->
   <section class="container-x grid items-center gap-10 py-12 lg:grid-cols-2">
     <ImagePlaceholder src="/images/about-family-storefront.jpg" alt="The Antonio's family in front of the Juno Beach storefront" ratio="4/3" class="shadow-card" />
