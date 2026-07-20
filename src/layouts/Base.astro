@@ -13,10 +13,9 @@ export interface Props {
   path: string;
   ogImage?: string;
   includeBakerySchema?: boolean;
-  includeFloristSchema?: boolean;
 }
 
-const { title, description, path, ogImage, includeBakerySchema, includeFloristSchema } = Astro.props;
+const { title, description, path, ogImage, includeBakerySchema } = Astro.props;
 ---
 
 <!doctype html>
@@ -24,34 +23,29 @@ const { title, description, path, ogImage, includeBakerySchema, includeFloristSc
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Google tag (gtag.js) — GA4 property G-6Z0KVZ0TGF -->
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-6Z0KVZ0TGF"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-6Z0KVZ0TGF');
+    </script>
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <meta name="theme-color" content="#1f4d3a" />
     <meta name="google-site-verification" content="1o8JzrBZk58LUpgG-9QyDcNNiKG2EoJRuigRukyvmZ0" />
-
-    <!-- Google Tag Manager -->
-    <script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-5QFSZHHF');</script>
-    <!-- End Google Tag Manager -->
-    <!-- GA4 (G-6Z0KVZ0TGF) fires through the GTM container above — do not re-add a direct gtag.js snippet here or pageviews will double-count. -->
     <Seo
       title={title}
       description={description}
       path={path}
       ogImage={ogImage}
       includeBakerySchema={includeBakerySchema}
-      includeFloristSchema={includeFloristSchema}
     />
   </head>
   <body class="flex min-h-screen flex-col">
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5QFSZHHF"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
     <a href="#main" class="skip-link">Skip to content</a>
     <Header />
     <main id="main" class="flex-1">

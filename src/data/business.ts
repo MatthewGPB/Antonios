@@ -96,24 +96,6 @@ export const business = {
   },
 
   /**
-   * Direct Floral — Taylor's flower business, operating from the same address
-   * as a third distinct family brand. Gets its own page (/flowers), its own
-   * accent treatment, and its own Florist JSON-LD for its Google Business Profile.
-   */
-  directFloral: {
-    name: 'Direct Floral',
-    tagline: 'Fresh Florida-Grown Flowers',
-    // Same physical address as Antonio's
-    address: {
-      full: '12214 US Highway 1, Juno Beach, FL 33408',
-    },
-    // {{FLORAL_PHONE_OR_SAME}} — a distinct number (even a forwarding line)
-    // strengthens the separate Google Business Profile. Shares Antonio's line for now.
-    phoneDisplay: '(561) 625-6544',
-    phoneHref: 'tel:+15616256544',
-  },
-
-  /**
    * Antonio's is a local distributor of The Upper Crust pies — order their
    * deep-dish pies through Antonio's. The Upper Crust is a separate, family-owned
    * Lake Worth bakery (a Palm Beach County icon since 1978); we resell/carry them.

@@ -22,7 +22,6 @@ export const primaryNav: NavItem[] = [
       { label: 'Upper Crust Pies', href: '/upper-crust-pies' },
     ],
   },
-  { label: 'Flowers', href: '/flowers' },
   { label: 'About', href: '/about' },
   { label: 'Contact', href: '/contact' },
 ];
