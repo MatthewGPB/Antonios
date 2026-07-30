@@ -1,0 +1,19 @@
+{
+  "redirects": [
+    { "source": "/menus", "destination": "/menu", "permanent": true },
+    { "source": "/menus/:path*", "destination": "/menu", "permanent": true },
+    { "source": "/catering-menu", "destination": "/catering", "permanent": true },
+    { "source": "/gallery", "destination": "/", "permanent": true },
+    { "source": "/gallery/:path*", "destination": "/", "permanent": true },
+    { "source": "/home", "destination": "/", "permanent": true },
+    { "source": "/order-online", "destination": "/menu", "permanent": true },
+    { "source": "/contact-us", "destination": "/contact", "permanent": true },
+    { "source": "/about-us", "destination": "/about", "permanent": true },
+    { "source": "/our-story", "destination": "/about", "permanent": true },
+    { "source": "/sausage", "destination": "/our-sausage", "permanent": true },
+    { "source": "/subs", "destination": "/subs-and-sandwiches", "permanent": true },
+    { "source": "/sandwiches", "destination": "/subs-and-sandwiches", "permanent": true },
+    { "source": "/bakery/cakes", "destination": "/bakery", "permanent": true },
+    { "source": "/bakery/pastries-and-desserts", "destination": "/bakery/breakfast-and-desserts", "permanent": true }
+  ]
+}
