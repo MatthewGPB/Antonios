@@ -10,9 +10,11 @@ export interface Props {
   ogImage?: string;
   /** Add Izzy's Bakery JSON-LD in addition to the sitewide LocalBusiness. */
   includeBakerySchema?: boolean;
+  /** Add Direct Floral (Florist) JSON-LD in addition to the sitewide LocalBusiness. */
+  includeFloristSchema?: boolean;
 }
 
-const { title, description, path, ogImage = '/images/sub-combo-italiano.jpg', includeBakerySchema = false } = Astro.props;
+const { title, description, path, ogImage = '/images/sub-combo-italiano.jpg', includeBakerySchema = false, includeFloristSchema = false } = Astro.props;
 
 const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://antoniospb.com';
 const canonical = `${siteUrl}${path === '/' ? '' : path}`;
@@ -68,6 +70,29 @@ const bakerySchema = includeBakerySchema
       parentOrganization: { '@id': `${siteUrl}/#business` },
     }
   : null;
+
+// --- Florist schema (Direct Floral) — only on the flowers page ---
+const floristSchema = includeFloristSchema
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'Florist',
+      '@id': `${siteUrl}/flowers/#florist`,
+      name: business.directFloral.name,
+      description:
+        'Direct Floral — fresh Florida-grown flowers inside Antonio\u2019s Italian Market in Juno Beach, FL. Custom orchid arrangements, bouquets, and flowers for weddings, events, homes, and churches. Call or come in to order; pickup and local delivery available.',
+      url: `${siteUrl}/flowers`,
+      telephone: business.directFloral.phoneDisplay,
+      priceRange: business.priceRange,
+      address: postalAddress,
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: business.geo.latitude,
+        longitude: business.geo.longitude,
+      },
+      openingHoursSpecification,
+      parentOrganization: { '@id': `${siteUrl}/#business` },
+    }
+  : null;
 ---
 
 <!-- Primary meta -->
@@ -94,3 +119,4 @@ const bakerySchema = includeBakerySchema
 <!-- Structured data -->
 <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
 {bakerySchema && <script type="application/ld+json" set:html={JSON.stringify(bakerySchema)} />}
+{floristSchema && <script type="application/ld+json" set:html={JSON.stringify(floristSchema)} />}
