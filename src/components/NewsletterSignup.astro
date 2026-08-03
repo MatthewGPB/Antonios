@@ -1,0 +1,169 @@
+---
+import { mailchimpForm } from '@data/business';
+
+/**
+ * Reusable email-capture form that subscribes people to the Mailchimp audience.
+ *
+ * How it submits (progressive enhancement):
+ *   • JS on  → posts via JSONP to Mailchimp's /post-json endpoint, so the visitor
+ *              stays on the page and sees an inline success/error message.
+ *   • JS off → falls back to a native form POST to Mailchimp's hosted form.
+ *   • Not configured yet → shows a friendly note and never posts to a broken URL.
+ *
+ * Config lives in ONE place: src/data/business.ts → business.mailchimp.formAction.
+ *
+ * Use it more than once per page by giving each instance a unique `formId`.
+ */
+export interface Props {
+  /** Unique per instance, e.g. "signup-popup" or "signup-home". */
+  formId: string;
+  /** Match the surrounding background so the helper text stays readable. */
+  tone?: 'onLight' | 'onDark';
+  buttonLabel?: string;
+  placeholder?: string;
+}
+
+const {
+  formId,
+  tone = 'onLight',
+  buttonLabel = 'Get My Free Pastry',
+  placeholder = 'you@email.com',
+} = Astro.props;
+
+const mc = mailchimpForm;
+const helpColor = tone === 'onDark' ? 'text-cream/80' : 'text-ink/60';
+const inputCls =
+  'w-full rounded-full border border-ink/15 bg-white px-5 py-3 text-ink placeholder:text-ink/45 shadow-sm outline-none transition focus:border-forest focus:ring-2 focus:ring-gold/40';
+---
+
+<form
+  id={formId}
+  action={mc.ready ? mc.postUrl : '#'}
+  method="post"
+  target="_blank"
+  rel="noopener"
+  novalidate
+  data-mc-json={mc.jsonUrl}
+  class="w-full"
+>
+  <div class="flex flex-col gap-3 sm:flex-row">
+    <label class="sr-only" for={`${formId}-email`}>Email address</label>
+    <input
+      id={`${formId}-email`}
+      class={`${inputCls} sm:flex-1`}
+      type="email"
+      name="EMAIL"
+      required
+      autocomplete="email"
+      placeholder={placeholder}
+    />
+
+    {/* Mailchimp anti-bot honeypot — must stay empty and off-screen for humans. */}
+    {mc.ready && (
+      <div style="position:absolute;left:-5000px;" aria-hidden="true">
+        <input type="text" name={mc.honeypot} tabindex="-1" value="" autocomplete="off" />
+      </div>
+    )}
+
+    <button type="submit" class="btn-gold shrink-0">{buttonLabel}</button>
+  </div>
+
+  <p
+    id={`${formId}-status`}
+    role="status"
+    aria-live="polite"
+    class={`mt-2 min-h-[1.25rem] text-sm ${helpColor}`}
+  ></p>
+
+  {!mc.ready && (
+    <p class={`mt-1 text-xs ${helpColor}`}>
+      Email signup goes live as soon as the Mailchimp form link is added.
+    </p>
+  )}
+</form>
+
+<script is:inline define:vars={{ formId }}>
+  (function () {
+    var form = document.getElementById(formId);
+    if (!form) return;
+    var status = document.getElementById(formId + '-status');
+    var jsonUrl = form.getAttribute('data-mc-json');
+
+    function setStatus(msg, ok) {
+      if (!status) return;
+      status.textContent = msg;
+      status.style.color = ok ? 'var(--forest)' : 'var(--wine)';
+    }
+
+    // Decode Mailchimp's occasionally-HTML error strings into plain text.
+    function tidy(msg) {
+      msg = String(msg).replace(/^\d+\s*-\s*/, '');
+      var d = document.createElement('div');
+      d.innerHTML = msg;
+      var text = d.textContent || d.innerText || msg;
+      if (/already subscribed/i.test(text)) {
+        return 'You\u2019re already on the list \u2014 your offer is in your inbox.';
+      }
+      return text;
+    }
+
+    form.addEventListener('submit', function (e) {
+      // Not configured yet: don't fire off a broken request.
+      if (!jsonUrl) {
+        e.preventDefault();
+        setStatus('Email signup will be live once Mailchimp is connected.', false);
+        return;
+      }
+
+      e.preventDefault();
+      var emailInput = form.querySelector('input[type=email]');
+      var email = emailInput ? emailInput.value.trim() : '';
+      if (!email || email.indexOf('@') < 1) {
+        setStatus('Please enter a valid email address.', false);
+        if (emailInput) emailInput.focus();
+        return;
+      }
+
+      setStatus('Signing you up\u2026', true);
+
+      var cb = 'mcjsonp_' + Date.now();
+      var params = new URLSearchParams(new FormData(form));
+      params.set('c', cb);
+
+      var script = document.createElement('script');
+      var done = false;
+
+      window[cb] = function (data) {
+        done = true;
+        var ok = data && data.result === 'success';
+        setStatus(
+          ok
+            ? 'You\u2019re in! Check your inbox (and spam) for your free-pastry offer.'
+            : tidy((data && data.msg) || 'Something went wrong \u2014 please try again.'),
+          ok
+        );
+        if (ok) {
+          try { localStorage.setItem('antonios_subscribed', '1'); } catch (_) {}
+          form.reset();
+          document.dispatchEvent(new CustomEvent('antonios:subscribed'));
+        }
+        cleanup();
+      };
+
+      function cleanup() {
+        try { delete window[cb]; } catch (_) { window[cb] = undefined; }
+        if (script.parentNode) script.parentNode.removeChild(script);
+      }
+
+      script.onerror = function () {
+        if (!done) { setStatus('Network hiccup \u2014 please try again.', false); cleanup(); }
+      };
+      script.src = jsonUrl + '&' + params.toString();
+      document.body.appendChild(script);
+
+      setTimeout(function () {
+        if (!done) { setStatus('Still working\u2026 check your inbox shortly.', true); cleanup(); }
+      }, 8000);
+    });
+  })();
+</script>

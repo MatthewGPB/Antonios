@@ -3,6 +3,7 @@ import Base from '@layouts/Base.astro';
 import Hero from '@components/Hero.astro';
 import SectionCTA from '@components/SectionCTA.astro';
 import ImagePlaceholder from '@components/ImagePlaceholder.astro';
+import NewsletterSignup from '@components/NewsletterSignup.astro';
 import { business } from '@data/business';
 
 const quickLinks = [
@@ -184,6 +185,47 @@ const bakeryHighlights = [
         beloved Bella Napoli.
       </p>
       <a href="/about" class="btn-outline mt-6">Read our story</a>
+    </div>
+  </section>
+
+  <!-- Free pastry email offer -->
+  <section class="container-x py-12">
+    <div class="relative overflow-hidden rounded-xl2 bg-wine p-8 text-cream shadow-lift sm:p-10 lg:p-12">
+      <div class="pointer-events-none absolute inset-0 opacity-15" aria-hidden="true">
+        <div class="absolute -left-16 -top-16 h-64 w-64 rounded-full bg-gold blur-3xl"></div>
+        <div class="absolute -bottom-20 -right-10 h-72 w-72 rounded-full bg-cream blur-3xl"></div>
+      </div>
+
+      <div class="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+        <div>
+          <p class="eyebrow mb-3" style="color:var(--gold)">A treat on the house</p>
+          <h2 class="font-display text-3xl font-semibold text-cream sm:text-4xl lg:text-5xl">
+            Free pastry with any sandwich, sub, or meal
+          </h2>
+          <p class="mt-4 max-w-xl text-cream/85">
+            Join our email list and we&rsquo;ll send you a coupon for a free Izzy&rsquo;s Bakery pastry with any
+            Antonio&rsquo;s sandwich, sub, or meal. Just show the email at the counter to redeem &mdash; plus
+            you&rsquo;ll be first to hear about specials and fresh-baked favorites.
+          </p>
+          <div class="mt-7 max-w-md">
+            <NewsletterSignup formId="signup-home" tone="onDark" buttonLabel="Send My Free Pastry" />
+          </div>
+          <p class="mt-3 text-xs text-cream/70">One per customer &middot; Unsubscribe anytime.</p>
+        </div>
+
+        <!-- Coupon card -->
+        <div class="relative">
+          <div class="absolute -inset-3 -z-10 rounded-[1.6rem] bg-gold/20" aria-hidden="true"></div>
+          <div class="rounded-xl2 border-2 border-dashed border-cream/50 bg-forest/30 p-6 text-center backdrop-blur-sm sm:p-8">
+            <p class="text-xs font-bold uppercase tracking-[0.25em] text-gold">Antonio&rsquo;s &times; Izzy&rsquo;s Bakery</p>
+            <p class="mt-4 font-display text-5xl font-semibold leading-none text-cream sm:text-6xl">FREE</p>
+            <p class="mt-1 font-display text-2xl text-cream">Pastry</p>
+            <div class="my-5 h-px w-full bg-cream/25"></div>
+            <p class="text-sm text-cream/85">with any Antonio&rsquo;s sandwich, sub, or meal</p>
+            <p class="mt-4 text-[0.7rem] uppercase tracking-wider text-cream/60">Show your email at the counter</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 

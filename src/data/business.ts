@@ -125,6 +125,25 @@ export const business = {
     orderUrl: 'https://www.getsauce.com/order/antonios-deli-and-meats/menu', // {{UPPER_CRUST_ORDER_URL}}
     website: 'https://theuppercrustpies.com',
   },
+
+  /**
+   * Mailchimp email signup (welcome popup + homepage offer form).
+   * -----------------------------------------------------------------
+   * Paste your audience's *embedded form action URL* below — that's the ONLY
+   * thing you need to change to make both signup forms go live.
+   *
+   * Where to find it in Mailchimp:
+   *   Audience → Signup forms → Embedded forms → "Form Action" / the generated
+   *   <form action="..."> URL. It looks like:
+   *     https://YOURNAME.us21.list-manage.com/subscribe/post?u=abc123...&id=def456...
+   *   Copy the whole thing (including the ?u=…&id=… part) and paste it here.
+   *
+   * The u= and id= values are parsed out automatically (see mailchimpForm below),
+   * so you don't have to touch anything else.
+   */
+  mailchimp: {
+    formAction: 'https://antoniospb.us20.list-manage.com/subscribe/post?u=42bb435a338479e2f54fbe577&id=f2511f74a9&f_id=007934e2f0',
+  },
 } as const;
 
 export type Business = typeof business;
@@ -148,5 +167,34 @@ export const postalAddress = {
   postalCode: business.address.postalCode,
   addressCountry: business.address.country,
 };
+
+/**
+ * Derived Mailchimp signup config, parsed from business.mailchimp.formAction.
+ * Splits the single embed URL into the pieces the signup forms need:
+ *   - ready    : false while formAction is still the {{PLACEHOLDER}} (forms show
+ *                a friendly "coming soon" note and never post to a broken URL)
+ *   - postUrl  : native <form action> target — used as a no-JS fallback
+ *   - jsonUrl  : JSONP endpoint for on-page AJAX submit (no CORS, no page leave)
+ *   - honeypot : the anti-bot field name Mailchimp expects (b_<u>_<id>)
+ */
+function parseMailchimp(action: string) {
+  try {
+    const url = new URL(action);
+    const u = url.searchParams.get('u') ?? '';
+    const id = url.searchParams.get('id') ?? '';
+    if (!u || !id) throw new Error('missing u/id');
+    const base = url.origin + url.pathname; // …/subscribe/post
+    return {
+      ready: true,
+      postUrl: `${base}?u=${u}&id=${id}`,
+      jsonUrl: `${base}-json?u=${u}&id=${id}`,
+      honeypot: `b_${u}_${id}`,
+    };
+  } catch {
+    return { ready: false, postUrl: '', jsonUrl: '', honeypot: '' };
+  }
+}
+
+export const mailchimpForm = parseMailchimp(business.mailchimp.formAction);
 
 export default business;
