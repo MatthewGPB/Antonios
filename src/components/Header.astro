@@ -11,13 +11,16 @@ const orderUrl = business.orderUrl;
 
 <header class="sticky top-0 z-50 border-b border-ink/10 bg-cream/90 backdrop-blur supports-[backdrop-filter]:bg-cream/80">
   <div class="container-x flex h-[68px] items-center justify-between gap-4">
-    <!-- Wordmark (drop a real logo into this <a> later) -->
-    <a href="/" class="group flex items-center gap-3" aria-label={`${business.name} — home`}>
-      <span class="grid h-10 w-10 place-items-center rounded-full border-2 border-gold bg-forest font-display text-xl font-bold text-cream">A</span>
-      <span class="leading-none">
-        <span class="block font-display text-xl font-semibold tracking-tight text-forest">Antonio&rsquo;s</span>
-        <span class="block text-[10px] font-semibold uppercase tracking-[0.28em] text-wine">{business.tagline}</span>
-      </span>
+    <!-- Logo -->
+    <a href="/" class="group flex items-center" aria-label={`${business.name} — home`}>
+      <img
+        src="/images/antonios-logo.png"
+        alt="Antonio&rsquo;s Italian Market &amp; Deli"
+        width="315"
+        height="320"
+        class="h-12 w-auto sm:h-14"
+        decoding="async"
+      />
     </a>
 
     <!-- Desktop nav (xl and up) -->
