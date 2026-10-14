@@ -15,12 +15,11 @@ export const primaryNav: NavItem[] = [
     href: '/bakery',
     children: [
       { label: "Izzy's Bakery", href: '/bakery' },
-      { label: 'Sourdough & Breads', href: '/bakery/sourdough-and-breads' },
-      { label: 'Breakfast & Desserts', href: '/bakery/breakfast-and-desserts' },
       { label: 'Upper Crust Pies', href: '/upper-crust-pies' },
     ],
   },
   { label: 'Flowers', href: '/flowers' },
   { label: 'About', href: '/about' },
+  { label: 'Reviews', href: '/reviews' },
   { label: 'Contact', href: '/contact' },
 ];

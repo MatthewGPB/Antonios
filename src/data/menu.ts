@@ -411,3 +411,6 @@ export const breakfastAndDesserts: MenuSection[] = [
     ],
   },
 ];
+
+/** The complete Izzy's Bakery menu shown on /bakery: breads first, then breakfast & desserts. */
+export const bakeryMenu: MenuSection[] = [...sourdoughAndBreads, ...breakfastAndDesserts];

@@ -2,13 +2,10 @@
 import Base from '@layouts/Base.astro';
 import Hero from '@components/Hero.astro';
 import ImagePlaceholder from '@components/ImagePlaceholder.astro';
+import MenuList from '@components/MenuList.astro';
 import SectionCTA from '@components/SectionCTA.astro';
 import { business } from '@data/business';
-
-const cards = [
-  { title: 'Sourdough & Breads', text: 'Naturally leavened sourdough and fresh-baked loaves, daily.', href: '/bakery/sourdough-and-breads', img: '/images/izzys-sourdough.jpg', alt: 'Fresh sourdough loaves with a crackly crust from Izzy\u2019s Bakery' },
-  { title: 'Breakfast & Desserts', text: 'Cinnamon rolls, danishes, scones, muffins, brownies, cookies & more.', href: '/bakery/breakfast-and-desserts', img: '/images/izzys-cinnamon-rolls.jpg', alt: 'Tray of fresh cinnamon rolls and breakfast pastries' },
-];
+import { bakeryMenu, sectionId } from '@data/menu';
 ---
 
 <Base
@@ -25,8 +22,8 @@ const cards = [
     imageSrc="/images/izzys-sourdough-hero.jpg"
     imageAlt="Izzy's Bakery sourdough loaves and fresh breads on the counter"
   >
-    <a slot="actions" href="/bakery/sourdough-and-breads" class="btn-wine">Our Sourdough</a>
-    <a slot="actions" href="/bakery/breakfast-and-desserts" class="btn-outline">Breakfast &amp; Desserts</a>
+    <a slot="actions" href="#fresh-sourdough" class="btn-wine">Our Sourdough</a>
+    <a slot="actions" href="#scones" class="btn-outline">Breakfast &amp; Desserts</a>
     <a slot="actions" href={business.izzys.phoneHref} class="btn-outline">Call {business.izzys.phoneDisplay}</a>
   </Hero>
 
@@ -41,27 +38,29 @@ const cards = [
         it&rsquo;s worth calling ahead or stopping in early. Grab a loaf to go with tonight&rsquo;s dinner
         from Antonio&rsquo;s &mdash; they&rsquo;re made for each other.
       </p>
-      <a href="/bakery/sourdough-and-breads" class="btn-wine mt-6">See our breads</a>
+      <a href="#fresh-sourdough" class="btn-wine mt-6">See our breads</a>
     </div>
   </section>
 
-  <!-- Two category cards -->
-  <section class="container-x py-8">
-    <div class="grid gap-8 md:grid-cols-2">
-      {cards.map((c) => (
-        <a href={c.href} class="group flex flex-col overflow-hidden rounded-xl2 border border-berry/15 bg-cream/60 shadow-card transition hover:-translate-y-1 hover:shadow-lift">
-          <ImagePlaceholder src={c.img} alt={c.alt} ratio="16/10" variant="bakery" class="rounded-none border-0" />
-          <div class="flex flex-1 flex-col p-6">
-            <h2 class="font-display text-2xl text-berry">{c.title}</h2>
-            <p class="mt-1 flex-1 text-ink/65">{c.text}</p>
-            <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-berry">
-              See more
-              <svg class="h-4 w-4 transition group-hover:translate-x-1" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
-          </div>
-        </a>
+  <!-- Jump to section -->
+  <nav class="container-x pt-4" aria-label="Jump to a bakery section">
+    <ul class="flex flex-wrap gap-2">
+      {bakeryMenu.map((section) => (
+        <li>
+          <a
+            href={`#${sectionId(section.title)}`}
+            class="inline-block rounded-full border border-berry/25 bg-cream px-3.5 py-1.5 text-sm font-semibold text-berry transition hover:border-berry hover:bg-berry hover:text-cream"
+          >
+            {section.title}
+          </a>
+        </li>
       ))}
-    </div>
+    </ul>
+  </nav>
+
+  <!-- Full bakery menu -->
+  <section class="container-x py-8">
+    <MenuList sections={bakeryMenu} variant="bakery" />
   </section>
 
   <!-- Upper Crust cross-link -->

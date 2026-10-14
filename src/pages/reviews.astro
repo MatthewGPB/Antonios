@@ -1,0 +1,81 @@
+---
+import Base from '@layouts/Base.astro';
+import PageHeader from '@components/PageHeader.astro';
+import SectionCTA from '@components/SectionCTA.astro';
+import { business } from '@data/business';
+
+const brands = [
+  {
+    name: business.name,
+    blurb: 'Deli counter, subs & sandwiches, prepared meals, house sausage & catering.',
+    url: business.reviewUrl,
+    accent: 'text-forest',
+    ring: 'ring-forest/15',
+  },
+  {
+    name: business.izzys.name,
+    blurb: 'Fresh sourdough, artisan breads, pastries & sweets — baked daily.',
+    url: business.izzys.reviewUrl,
+    accent: 'text-berry',
+    ring: 'ring-berry/20',
+  },
+  {
+    name: business.directFloral.name,
+    blurb: 'Fresh Florida-grown flowers, bouquets & custom arrangements.',
+    url: business.directFloral.reviewUrl,
+    accent: 'text-wine',
+    ring: 'ring-wine/15',
+  },
+];
+
+const isReady = (url: string) => !!url && !url.startsWith('{{');
+---
+
+<Base
+  title="Leave a Review | Antonio's Italian Market, Izzy's Bakery & Direct Floral"
+  description="Loved your visit to Antonio's Italian Market, Izzy's Bakery, or Direct Floral in Juno Beach, FL? Leave us a review on Google — it means the world to our family business."
+  path="/reviews"
+>
+  <PageHeader
+    eyebrow="We'd love your feedback"
+    title="Leave us a review"
+    lead="We're a family business, and a few kind words on Google go a long way — they help your neighbors find us and keep our little corner of Juno Beach thriving. Pick the shop you'd like to review:"
+  />
+
+  <section class="container-x py-10">
+    <div class="grid gap-8 md:grid-cols-3">
+      {brands.map((brand) => (
+        <div class={`flex flex-col rounded-xl2 border border-ink/10 bg-cream/60 p-7 text-center shadow-card ring-1 ${brand.ring}`}>
+          <div class="flex justify-center gap-1" aria-hidden="true">
+            {[0, 1, 2, 3, 4].map(() => (
+              <svg viewBox="0 0 20 20" class="h-5 w-5 text-gold" fill="currentColor"><path d="M10 1.6l2.47 5.01 5.53.8-4 3.9.94 5.5L10 14.2l-4.95 2.6.95-5.5-4-3.9 5.53-.8z"/></svg>
+            ))}
+          </div>
+          <h2 class={`mt-4 font-display text-2xl font-semibold ${brand.accent}`}>{brand.name}</h2>
+          <p class="mt-2 flex-1 text-sm text-ink/65">{brand.blurb}</p>
+          <div class="mt-6">
+            {isReady(brand.url) ? (
+              <a href={brand.url} target="_blank" rel="noopener noreferrer" class="btn-gold w-full">Leave a Review on Google</a>
+            ) : (
+              <>
+                <span class="btn-gold pointer-events-none w-full opacity-50">Review link coming soon</span>
+                <p class="mt-2 text-xs text-ink/50">Google review link not added yet.</p>
+              </>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <p class="mx-auto mt-10 max-w-2xl text-center text-sm text-ink/60">
+      Thank you for supporting a local, family-owned business. If something wasn't right, we'd rather hear
+      it directly — give us a call at
+      <a class="font-semibold text-wine hover:underline" href={business.phoneHref}>{business.phoneDisplay}</a>
+      and we'll make it right.
+    </p>
+  </section>
+
+  <div class="py-8">
+    <SectionCTA title="Come see us in Juno Beach" text="12214 US Highway 1 — open Mon–Sat, 9am to 5pm." variant="contact" />
+  </div>
+</Base>

@@ -1,7 +1,8 @@
 ---
-// This URL was renamed to /bakery/breakfast-and-desserts. Redirect here so old
-// links and search results don't 404, and to overwrite any stale old file.
-const dest = '/bakery/breakfast-and-desserts';
+// This page's content was merged into /bakery. Kept as a redirect stub so the
+// old URL keeps working, and so uploading over the old file (GitHub "Upload
+// files" does not delete removed files) replaces it with this redirect.
+const dest = '/bakery';
 ---
 <!doctype html>
 <html lang="en">
@@ -10,10 +11,10 @@ const dest = '/bakery/breakfast-and-desserts';
     <meta http-equiv="refresh" content={`0; url=${dest}`} />
     <link rel="canonical" href={dest} />
     <meta name="robots" content="noindex, follow" />
-    <title>Page moved — Breakfast &amp; Desserts</title>
+    <title>Page moved — Izzy's Bakery</title>
   </head>
   <body>
-    <p>This page has moved. <a href={dest}>Continue to Breakfast &amp; Desserts</a>.</p>
-    <script is:inline>window.location.replace('/bakery/breakfast-and-desserts');</script>
+    <p>This page has moved. <a href={dest}>Continue to Izzy's Bakery</a>.</p>
+    <script is:inline>window.location.replace('/bakery');</script>
   </body>
 </html>

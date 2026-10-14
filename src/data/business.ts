@@ -56,6 +56,11 @@ export const business = {
   // Verified Google Maps link to the business (used for directions / view-on-map).
   mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Antonio%27s%20Italian%20Market%2C%2012214%20US%20Highway%201%2C%20Juno%20Beach%2C%20FL%2033408',
 
+  // Direct "write a review" link for Antonio's Google Business Profile, used on /reviews.
+  // Get it from the GBP dashboard → "Ask for reviews" / "Get more reviews" (a
+  // https://g.page/r/… or search.google.com/local/writereview?placeid=… link).
+  reviewUrl: 'https://g.page/r/CSnT97DX6I9IEAE/review',
+
   // --- Hours --- {{CONFIRM_HOURS}} confirm against Google Business Profile
   hours: [
     { day: 'Monday', label: 'Mon', opens: '09:00', closes: '17:00' },
@@ -93,6 +98,8 @@ export const business = {
     // {{IZZYS_PHONE_OR_SAME}} — if Izzy's shares Antonio's line, reuse it here.
     phoneDisplay: '(561) 625-6544',
     phoneHref: 'tel:+15616256544',
+    // Direct "write a review" link for Izzy's Bakery Google Business Profile.
+    reviewUrl: 'https://g.page/r/CSa9qw2CMVGYEAE/review',
   },
 
   /**
@@ -111,6 +118,8 @@ export const business = {
     // strengthens the separate Google Business Profile. Shares Antonio's line for now.
     phoneDisplay: '(561) 625-6544',
     phoneHref: 'tel:+15616256544',
+    // Direct "write a review" link for Direct Floral's Google Business Profile.
+    reviewUrl: 'https://g.page/r/CYMJ8aFkLjHSEAE/review',
   },
 
   /**

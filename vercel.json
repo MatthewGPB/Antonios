@@ -18,6 +18,8 @@
     { "source": "/subs", "destination": "/menu", "permanent": true },
     { "source": "/sandwiches", "destination": "/menu", "permanent": true },
     { "source": "/bakery/cakes", "destination": "/bakery", "permanent": true },
-    { "source": "/bakery/pastries-and-desserts", "destination": "/bakery/breakfast-and-desserts", "permanent": true }
+    { "source": "/bakery/sourdough-and-breads", "destination": "/bakery", "permanent": true },
+    { "source": "/bakery/breakfast-and-desserts", "destination": "/bakery", "permanent": true },
+    { "source": "/bakery/pastries-and-desserts", "destination": "/bakery", "permanent": true }
   ]
 }

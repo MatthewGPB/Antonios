@@ -1,41 +1,20 @@
 ---
-import Base from '@layouts/Base.astro';
-import PageHeader from '@components/PageHeader.astro';
-import MenuList from '@components/MenuList.astro';
-import SectionCTA from '@components/SectionCTA.astro';
-import ImagePlaceholder from '@components/ImagePlaceholder.astro';
-import { subsMenu } from '@data/menu';
+// This page's content was merged into /menu. Kept as a redirect stub so the
+// old URL keeps working, and so uploading over the old file (GitHub "Upload
+// files" does not delete removed files) replaces it with this redirect.
+const dest = '/menu';
 ---
-
-<Base
-  title="Best Italian Subs & Sandwiches in Juno Beach | Antonio's Italian Market"
-  description="Hand-stacked Italian subs, clubs, wraps, and pressed paninis on fresh-baked bread in Juno Beach, FL. Combo Italiano, Italian Club, Il Antonio sausage sub, The Anna panini, and more — made to order."
-  path="/subs-and-sandwiches"
->
-  <PageHeader
-    eyebrow="Subs · Clubs · Wraps · Paninis"
-    title="The best Italian sub near you"
-    lead="We stack imported meats and fresh mozzarella on bread baked right here. Whether you want it cold and classic or hot off the press, every sandwich is built to order."
-  />
-
-  <section class="container-x grid items-center gap-10 py-12 lg:grid-cols-2">
-    <ImagePlaceholder src="/images/sub-combo-italiano.jpg" alt="Combo Italiano sub with ham, Genoa salami, capicola, mortadella, and provolone" ratio="4/3" class="shadow-card" />
-    <div>
-      <p class="eyebrow mb-3">House favorite</p>
-      <h2 class="font-display text-3xl font-semibold sm:text-4xl">The Combo Italiano</h2>
-      <p class="prose-warm mt-4">
-        Ham, Genoa salami, spicy capicola, mortadella, and imported provolone with romaine, tomatoes, red
-        onion, and banana peppers, finished with oregano. The classic Italian sub that keeps regulars coming
-        back — and if you want it pressed, ask and we&rsquo;ll panini it.
-      </p>
-    </div>
-  </section>
-
-  <section class="container-x py-8">
-    <MenuList sections={subsMenu} />
-  </section>
-
-  <div class="py-12">
-    <SectionCTA title="Call ahead and skip the wait" text="Order your subs online or by phone and we'll have them wrapped and ready." variant="order" />
-  </div>
-</Base>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="refresh" content={`0; url=${dest}`} />
+    <link rel="canonical" href={dest} />
+    <meta name="robots" content="noindex, follow" />
+    <title>Page moved — our menu</title>
+  </head>
+  <body>
+    <p>This page has moved. <a href={dest}>Continue to our menu</a>.</p>
+    <script is:inline>window.location.replace('/menu');</script>
+  </body>
+</html>
