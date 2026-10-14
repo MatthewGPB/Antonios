@@ -17,6 +17,10 @@ export interface MenuSection {
   items: MenuItem[];
 }
 
+/** Stable anchor id for a section, used by the on-page jump nav and deep links. */
+export const sectionId = (title: string): string =>
+  title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
 /* ===================== ANTONIO'S DELI MENU ===================== */
 
 /* ---- Lasagnas (XL, family-sized) ---- */
@@ -162,7 +166,7 @@ const drinks: MenuSection = {
 /** Full deli menu shown on /menu */
 export const deliMenu: MenuSection[] = [lasagnas, hotDinners, soups, salads, sides, kids, desserts, drinks];
 
-/** Take-home family dinners shown on /prepared-meals */
+/** Take-home family dinners (a subset of the deli menu; now folded into /menu). */
 export const preparedMeals: MenuSection[] = [lasagnas, hotDinners];
 
 /* ===================== SUBS, SANDWICHES & PANINIS ===================== */
@@ -222,8 +226,11 @@ const paninis: MenuSection = {
   ],
 };
 
-/** Shown on /subs-and-sandwiches */
+/** Subs, sandwiches & paninis — now shown on the combined /menu. */
 export const subsMenu: MenuSection[] = [coldSubs, hotSubs, paninis];
+
+/** The complete menu shown on /menu: subs & sandwiches first, then the deli menu. */
+export const fullMenu: MenuSection[] = [...subsMenu, ...deliMenu];
 
 
 /* ===================== CATERING ===================== */

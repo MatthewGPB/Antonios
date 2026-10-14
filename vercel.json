@@ -11,8 +11,12 @@
     { "source": "/about-us", "destination": "/about", "permanent": true },
     { "source": "/our-story", "destination": "/about", "permanent": true },
     { "source": "/sausage", "destination": "/our-sausage", "permanent": true },
-    { "source": "/subs", "destination": "/subs-and-sandwiches", "permanent": true },
-    { "source": "/sandwiches", "destination": "/subs-and-sandwiches", "permanent": true },
+    { "source": "/subs-and-sandwiches", "destination": "/menu", "permanent": true },
+    { "source": "/subs-and-sandwiches/:path*", "destination": "/menu", "permanent": true },
+    { "source": "/prepared-meals", "destination": "/menu", "permanent": true },
+    { "source": "/prepared-meals/:path*", "destination": "/menu", "permanent": true },
+    { "source": "/subs", "destination": "/menu", "permanent": true },
+    { "source": "/sandwiches", "destination": "/menu", "permanent": true },
     { "source": "/bakery/cakes", "destination": "/bakery", "permanent": true },
     { "source": "/bakery/pastries-and-desserts", "destination": "/bakery/breakfast-and-desserts", "permanent": true }
   ]

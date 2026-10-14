@@ -3,23 +3,39 @@ import Base from '@layouts/Base.astro';
 import PageHeader from '@components/PageHeader.astro';
 import MenuList from '@components/MenuList.astro';
 import SectionCTA from '@components/SectionCTA.astro';
-import { deliMenu } from '@data/menu';
+import { fullMenu, sectionId } from '@data/menu';
 import { business } from '@data/business';
 ---
 
 <Base
-  title="Menu — Lasagna, Hot Dinners, Salads & More | Antonio's Italian Market"
-  description="Antonio's Italian Market menu in Juno Beach, FL: famous XL lasagna, chicken & eggplant parm, penne alla vodka, soups, big Italian salads, sides, and desserts. Order online or call."
+  title="Full Menu — Subs, Sandwiches, Lasagna, Dinners & More | Antonio's Italian Market"
+  description="The complete Antonio's Italian Market menu in Juno Beach, FL: hand-stacked Italian subs, clubs, wraps & paninis, famous XL lasagna, chicken & eggplant parm, prepared family dinners to go, big Italian salads, soups, sides, and desserts. Order online or call."
   path="/menu"
 >
   <PageHeader
     eyebrow="The full menu"
-    title="Lasagna, hot dinners, salads & more"
-    lead="Our famous XL lasagna, parm dinners, fresh pastas, big Italian salads, soups, and desserts — all cooked fresh in our Juno Beach kitchen. Looking for subs and paninis? Those have their own page."
+    title="Everything we make, in one place"
+    lead="Our whole menu — hand-stacked subs, clubs, wraps and pressed paninis, plus famous XL lasagna, hot parm dinners and prepared family trays to go, big Italian salads, soups, sides, and desserts. All made fresh in our Juno Beach kitchen. Order by 2pm for same-day pickup, or call ahead for larger trays."
   />
 
-  <section class="container-x py-12">
-    <MenuList sections={deliMenu} />
+  <!-- Jump to section -->
+  <nav class="container-x pt-2" aria-label="Jump to a menu section">
+    <ul class="flex flex-wrap gap-2">
+      {fullMenu.map((section) => (
+        <li>
+          <a
+            href={`#${sectionId(section.title)}`}
+            class="inline-block rounded-full border border-ink/15 bg-cream px-3.5 py-1.5 text-sm font-semibold text-forest transition hover:border-forest hover:bg-forest hover:text-cream"
+          >
+            {section.title}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+
+  <section class="container-x py-10">
+    <MenuList sections={fullMenu} />
     <p class="mt-8 text-center text-sm italic text-ink/55">
       Items and prices may change — confirm current offerings or place an order by calling
       <a class="font-semibold text-wine hover:underline" href={business.phoneHref}>{business.phoneDisplay}</a>,

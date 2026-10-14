@@ -9,9 +9,7 @@ export const primaryNav: NavItem[] = [
   { label: 'Home', href: '/' },
   { label: 'Menu', href: '/menu' },
   { label: 'Catering', href: '/catering' },
-  { label: 'Subs & Sandwiches', href: '/subs-and-sandwiches' },
   { label: 'Our Sausage', href: '/our-sausage' },
-  { label: 'Prepared Meals', href: '/prepared-meals' },
   {
     label: 'Bakery',
     href: '/bakery',
