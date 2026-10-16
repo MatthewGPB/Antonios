@@ -41,6 +41,19 @@ const { title, description, path, ogImage, includeBakerySchema, includeFloristSc
       gtag('js', new Date());
       gtag('config', 'G-6Z0KVZ0TGF');
     </script>
+
+    <!-- GA4 custom event: track clicks on any phone (tel:) link, site-wide -->
+    <script is:inline>
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest('a[href^="tel:"]');
+        if (a && typeof gtag === 'function') {
+          gtag('event', 'phone_call_click', {
+            link_text: (a.innerText || '').trim().slice(0, 50),
+            page_path: location.pathname
+          });
+        }
+      });
+    </script>
     <Seo
       title={title}
       description={description}
